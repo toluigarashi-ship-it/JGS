@@ -648,6 +648,7 @@ partial class FrameSheetListForm
         gcMultiRow1.Size = new Size(1359, 555);
         gcMultiRow1.TabIndex = 408;
         gcMultiRow1.Text = "gcMultiRow1";
+        gcMultiRow1.CellDoubleClick += GcMultiRow1_CellDoubleClick;
         // 
         // KensuLbl
         // 

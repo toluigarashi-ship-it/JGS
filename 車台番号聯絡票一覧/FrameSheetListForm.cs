@@ -50,8 +50,6 @@ public partial class FrameSheetListForm : Form
     public FrameSheetListForm()
     {
         InitializeComponent();
-        gcMultiRow1.Template = new FrameSheetListFormTemplate();
-        gcMultiRow1.Layout += GcMultiRow1_Layout;
 
         // ---- Configの設定取得 ----
         _connectionString = DbConnection.GetSqlConnectionString();
@@ -62,6 +60,11 @@ public partial class FrameSheetListForm : Form
         }
         _userId = DesktopApp.Properties.Settings.Default.SavedLoginId;
 
+        // ---- MultiRowの設定 ----
+        gcMultiRow1.Template = new FrameSheetListFormTemplate();
+        HookHeaderFilterClosed();
+
+        // ---- Logicクラス ----
         _logic = new FrameSheetListLogic(_connectionString, _userId);
 
     }
@@ -78,7 +81,7 @@ public partial class FrameSheetListForm : Form
     {
         SetupConditionBindings();
         ClearSearchConditions();
-        gcMultiRow1.DataSource = _viewModel;
+        gcMultiRow1.DataSource = _viewModel.Items;
     }
 
     /// <summary>
@@ -116,6 +119,14 @@ public partial class FrameSheetListForm : Form
         ClearSearchConditions();
     }
 
+    /// <summary>
+    /// MultiRowダブルクリック時のイベント
+    /// </summary>
+    private void GcMultiRow1_CellDoubleClick(object sender, CellEventArgs e)
+    {
+
+    }
+
     #endregion
 
     #region Privateメソッド
@@ -132,15 +143,6 @@ public partial class FrameSheetListForm : Form
         // 件数表示
         KakuninMaeLbl.Text = _viewModel.Summary.CNT_KAKUNINMAE.ToString();
         IchijiHozonLbl.Text = _viewModel.Summary.CNT_ICHIZON.ToString();
-        UpdateVisibleRowCountLabel();
-    }
-
-    /// <summary>
-    /// MultiRowのレイアウト更新時に件数表示を再計算する
-    /// （ヘッダーフィルター適用時の表示件数連動）
-    /// </summary>
-    private void GcMultiRow1_Layout(object? sender, LayoutEventArgs e)
-    {
         UpdateVisibleRowCountLabel();
     }
 
@@ -311,6 +313,35 @@ public partial class FrameSheetListForm : Form
             cell = null;
             return false;
         }
+    }
+
+    /// <summary>
+    /// ヘッダセルのフィルタ用ドロップダウンメニューのClosedイベントを購読する
+    /// </summary>
+    private void HookHeaderFilterClosed()
+    {
+        foreach (var section in this.gcMultiRow1.Template.ColumnHeaders)
+        {
+            foreach (var cell in section.Cells)
+            {
+                if (cell is GrapeCity.Win.MultiRow.ColumnHeaderCell headerCell &&
+                    headerCell.DropDownContextMenuStrip is GrapeCity.Win.MultiRow.HeaderDropDownContextMenu ddcm)
+                {
+                    ddcm.Closed -= this.HeaderDropDownListClosed;
+                    ddcm.Closed += this.HeaderDropDownListClosed;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// ヘッダのフィルタメニューが閉じられた後に表示件数ラベルを更新する
+    /// </summary>
+    /// <param name="sender">Closedイベントの送信元</param>
+    /// <param name="e">イベント引数</param>
+    private void HeaderDropDownListClosed(object? sender, EventArgs e)
+    {
+        UpdateVisibleRowCountLabel();
     }
 
     #endregion

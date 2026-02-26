@@ -105,7 +105,7 @@
             this.KkykNmHeader = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
             this.StrNmHeader = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
             this.StatusHeader = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
-            this.columnHeaderCell13 = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
+            this.FixedHeader = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
             this.ImpDTHeader = new GrapeCity.Win.MultiRow.ColumnHeaderCell();
             this.CsvTypCell = new GrapeCity.Win.MultiRow.TextBoxCell();
             this.FrmNoCell = new GrapeCity.Win.MultiRow.TextBoxCell();
@@ -115,7 +115,7 @@
             this.HchkykNoCell = new GrapeCity.Win.MultiRow.TextBoxCell();
             this.StatusCell = new GrapeCity.Win.MultiRow.TextBoxCell();
             this.ImpDTCell = new GrapeCity.Win.MultiRow.InputMan.GcDateTimeCell(false);
-            this.rowHeaderCell1 = new GrapeCity.Win.MultiRow.RowHeaderCell();
+            this.FixedCell = new GrapeCity.Win.MultiRow.RowHeaderCell();
             this.TntUTCell = new GrapeCity.Win.MultiRow.TextBoxCell();
             this.headerDropDownContextMenu1.SuspendLayout();
             // 
@@ -130,7 +130,7 @@
             this.Row.Cells.Add(this.FrmSerNoCell);
             this.Row.Cells.Add(this.StrNmCell);
             this.Row.Cells.Add(this.KkykNmCell);
-            this.Row.Cells.Add(this.rowHeaderCell1);
+            this.Row.Cells.Add(this.FixedCell);
             this.Row.Cells.Add(this.TntUTCell);
             this.Row.Height = 21;
             this.Row.Width = 1008;
@@ -146,7 +146,7 @@
             this.columnHeaderSection1.Cells.Add(this.KkykNmHeader);
             this.columnHeaderSection1.Cells.Add(this.StrNmHeader);
             this.columnHeaderSection1.Cells.Add(this.StatusHeader);
-            this.columnHeaderSection1.Cells.Add(this.columnHeaderCell13);
+            this.columnHeaderSection1.Cells.Add(this.FixedHeader);
             this.columnHeaderSection1.Cells.Add(this.ImpDTHeader);
             this.columnHeaderSection1.Height = 21;
             this.columnHeaderSection1.Name = "columnHeaderSection1";
@@ -350,13 +350,13 @@
             this.StatusHeader.TabIndex = 15;
             this.StatusHeader.Value = "ステータス";
             // 
-            // columnHeaderCell13
+            // FixedHeader
             // 
-            this.columnHeaderCell13.FilterCellName = "SyosonRiyu";
-            this.columnHeaderCell13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.columnHeaderCell13.Location = new System.Drawing.Point(0, 0);
-            this.columnHeaderCell13.Name = "columnHeaderCell13";
-            this.columnHeaderCell13.Size = new System.Drawing.Size(27, 21);
+            this.FixedHeader.FilterCellName = "SyosonRiyu";
+            this.FixedHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FixedHeader.Location = new System.Drawing.Point(0, 0);
+            this.FixedHeader.Name = "FixedHeader";
+            this.FixedHeader.Size = new System.Drawing.Size(27, 21);
             cellStyle19.BackColor = System.Drawing.Color.SteelBlue;
             border19.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border19.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
@@ -364,8 +364,8 @@
             border19.Top = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             cellStyle19.Border = border19;
             cellStyle19.ForeColor = System.Drawing.Color.White;
-            this.columnHeaderCell13.Style = cellStyle19;
-            this.columnHeaderCell13.TabIndex = 17;
+            this.FixedHeader.Style = cellStyle19;
+            this.FixedHeader.TabIndex = 17;
             // 
             // ImpDTHeader
             // 
@@ -393,7 +393,7 @@
             this.CsvTypCell.Name = "CsvTypCell";
             this.CsvTypCell.ReadOnly = true;
             this.CsvTypCell.Size = new System.Drawing.Size(59, 21);
-            cellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle3.BackColor = System.Drawing.Color.White;
             border3.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border3.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border3.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -410,7 +410,7 @@
             this.FrmNoCell.Name = "FrmNoCell";
             this.FrmNoCell.ReadOnly = true;
             this.FrmNoCell.Size = new System.Drawing.Size(137, 21);
-            cellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle5.BackColor = System.Drawing.Color.White;
             border5.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border5.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border5.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -426,7 +426,7 @@
             this.FrmSerNoCell.Name = "FrmSerNoCell";
             this.FrmSerNoCell.ReadOnly = true;
             this.FrmSerNoCell.Size = new System.Drawing.Size(166, 21);
-            cellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle6.BackColor = System.Drawing.Color.White;
             border6.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border6.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border6.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -474,7 +474,7 @@
             this.HchkykNoCell.Name = "HchkykNoCell";
             this.HchkykNoCell.ReadOnly = true;
             this.HchkykNoCell.Size = new System.Drawing.Size(106, 21);
-            cellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle4.BackColor = System.Drawing.Color.White;
             border4.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border4.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border4.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -491,7 +491,7 @@
             this.StatusCell.Name = "StatusCell";
             this.StatusCell.ReadOnly = true;
             this.StatusCell.Size = new System.Drawing.Size(103, 21);
-            cellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle2.BackColor = System.Drawing.Color.White;
             border2.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border2.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border2.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -538,20 +538,20 @@
             this.ImpDTCell.TabIndex = 26;
             this.ImpDTCell.Value = new System.DateTime(2025, 11, 25, 0, 0, 0, 0);
             // 
-            // rowHeaderCell1
+            // FixedCell
             // 
-            this.rowHeaderCell1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rowHeaderCell1.Location = new System.Drawing.Point(0, 0);
-            this.rowHeaderCell1.Name = "rowHeaderCell1";
-            this.rowHeaderCell1.Size = new System.Drawing.Size(27, 21);
+            this.FixedCell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FixedCell.Location = new System.Drawing.Point(0, 0);
+            this.FixedCell.Name = "FixedCell";
+            this.FixedCell.Size = new System.Drawing.Size(27, 21);
             cellStyle9.BackColor = System.Drawing.Color.SteelBlue;
             border9.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border9.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border9.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border9.Top = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             cellStyle9.Border = border9;
-            this.rowHeaderCell1.Style = cellStyle9;
-            this.rowHeaderCell1.TabIndex = 28;
+            this.FixedCell.Style = cellStyle9;
+            this.FixedCell.TabIndex = 28;
             // 
             // TntUTCell
             // 
@@ -559,7 +559,7 @@
             this.TntUTCell.Location = new System.Drawing.Point(27, 0);
             this.TntUTCell.Name = "TntUTCell";
             this.TntUTCell.ReadOnly = true;
-            cellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            cellStyle10.BackColor = System.Drawing.Color.White;
             border10.Bottom = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.Black);
             border10.Left = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
             border10.Right = new GrapeCity.Win.MultiRow.Line(GrapeCity.Win.MultiRow.LineStyle.Thin, System.Drawing.Color.DarkGray);
@@ -658,8 +658,8 @@
         private GrapeCity.Win.MultiRow.TextBoxCell StatusCell;
         private GrapeCity.Win.MultiRow.ColumnHeaderCell StatusHeader;
         private GrapeCity.Win.MultiRow.InputMan.GcDateTimeCell ImpDTCell;
-        private GrapeCity.Win.MultiRow.ColumnHeaderCell columnHeaderCell13;
-        private GrapeCity.Win.MultiRow.RowHeaderCell rowHeaderCell1;
+        private GrapeCity.Win.MultiRow.ColumnHeaderCell FixedHeader;
+        private GrapeCity.Win.MultiRow.RowHeaderCell FixedCell;
         private GrapeCity.Win.MultiRow.TextBoxCell TntUTCell;
         private GrapeCity.Win.MultiRow.ColumnHeaderCell ImpDTHeader;
     }
