@@ -35,6 +35,11 @@ public partial class FrameSheetListForm : Form
     /// <summary>初回表示フラグ</summary>
     private bool _isFirstShown;
 
+    /// <summary>
+    /// gcMultiRow1の表示行件数（KensuLbl反映済みの値）
+    /// </summary>
+    private int _currentVisibleRowCount = -1;
+
     #endregion
 
     #region コンストラクタ
@@ -46,6 +51,7 @@ public partial class FrameSheetListForm : Form
     {
         InitializeComponent();
         gcMultiRow1.Template = new FrameSheetListFormTemplate();
+        gcMultiRow1.Layout += GcMultiRow1_Layout;
 
         // ---- Configの設定取得 ----
         _connectionString = DbConnection.GetSqlConnectionString();
@@ -126,7 +132,40 @@ public partial class FrameSheetListForm : Form
         // 件数表示
         KakuninMaeLbl.Text = _viewModel.Summary.CNT_KAKUNINMAE.ToString();
         IchijiHozonLbl.Text = _viewModel.Summary.CNT_ICHIZON.ToString();
-        KensuLbl.Text = _viewModel.Summary.CNT_TOTAL.ToString();
+        UpdateVisibleRowCountLabel();
+    }
+
+    /// <summary>
+    /// MultiRowのレイアウト更新時に件数表示を再計算する
+    /// （ヘッダーフィルター適用時の表示件数連動）
+    /// </summary>
+    private void GcMultiRow1_Layout(object? sender, LayoutEventArgs e)
+    {
+        UpdateVisibleRowCountLabel();
+    }
+
+    /// <summary>
+    /// gcMultiRow1の現在表示行数を取得し、KensuLblに反映する
+    /// </summary>
+    private void UpdateVisibleRowCountLabel()
+    {
+        var visibleCount = 0;
+
+        foreach (Row row in gcMultiRow1.Rows)
+        {
+            if (row.Visible)
+            {
+                visibleCount++;
+            }
+        }
+
+        if (_currentVisibleRowCount == visibleCount)
+        {
+            return;
+        }
+
+        _currentVisibleRowCount = visibleCount;
+        KensuLbl.Text = visibleCount.ToString();
     }
 
     /// <summary>
