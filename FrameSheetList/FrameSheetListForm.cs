@@ -143,6 +143,13 @@ public partial class FrameSheetListForm : Form
         }
     }
 
+    /// <summary>
+    /// 閉じるボタンクリック時イベント
+    /// </summary>
+    private void CloseBtn_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
     #endregion
 
     #region Privateメソッド
