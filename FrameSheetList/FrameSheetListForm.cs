@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using Common.Db;
+using DesktopApp.DesktopCommon.ControlManager;
 using DesktopApp.DesktopCommon.DataAccess;
 using DesktopApp.FrameSheetCheck;
 using GrapeCity.Win.MultiRow;
@@ -35,9 +36,7 @@ public partial class FrameSheetListForm : Form
     /// <summary>初回表示フラグ</summary>
     private bool _isFirstShown;
 
-    /// <summary>
-    /// gcMultiRow1の表示行件数（KensuLbl反映済みの値）
-    /// </summary>
+    /// <summary>gcMultiRow1の表示行件数（KensuLbl反映済みの値）</summary>
     private int _currentVisibleRowCount = -1;
 
     #endregion
@@ -51,8 +50,9 @@ public partial class FrameSheetListForm : Form
     {
         InitializeComponent();
 
-        // ---- Configの設定取得 ----
+        //Configの設定取得
         _connectionString = DbConnection.GetSqlConnectionString();
+
         //ログインID
         if (DesktopApp.Properties.Settings.Default.SavedLoginId == null)
         {
@@ -60,11 +60,11 @@ public partial class FrameSheetListForm : Form
         }
         _userId = DesktopApp.Properties.Settings.Default.SavedLoginId;
 
-        // ---- MultiRowの設定 ----
+        //MultiRowの設定
         gcMultiRow1.Template = new FrameSheetListFormTemplate();
         HookHeaderFilterClosed();
 
-        // ---- Logicクラス ----
+        //Logic生成
         _logic = new FrameSheetListLogic(_connectionString, _userId);
 
     }
@@ -79,9 +79,18 @@ public partial class FrameSheetListForm : Form
     /// </summary>
     private void FrameSheetListForm_Load(object sender, EventArgs e)
     {
+        //検索条件コントロールとモデルを結合
         SetupConditionBindings();
+
+        //検索条件初期化
         ClearSearchConditions();
+
+        //MultiRowにデータソースバインド
         gcMultiRow1.DataSource = _viewModel.Items;
+
+        //実行環境に合わせて背景色を設定
+        ControlManager.AppEnvModeBackColor(this);
+
     }
 
     /// <summary>
@@ -94,6 +103,7 @@ public partial class FrameSheetListForm : Form
             return;
         }
 
+        //レイアウト確定後の動作を保証するため、BeginInvokeで列幅調整を実行
         this.BeginInvoke(new System.Action(() =>
         {
             this.AdjustColumnWidths();
@@ -120,11 +130,17 @@ public partial class FrameSheetListForm : Form
     }
 
     /// <summary>
-    /// MultiRowダブルクリック時のイベント
+    /// セルダブルクリック時イベント
+    /// 現状はポインタ位置や右クリックは関係ないのでCellMouseDoubleClickではなくこちらに実装
     /// </summary>
     private void GcMultiRow1_CellDoubleClick(object sender, CellEventArgs e)
     {
-
+        // ダブルクリックされたセルが行ヘッダセルならOK
+        if (gcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
+        {
+            MessageBox.Show($"ここでチェック画面表示　行番号：{e.RowIndex}");
+            //OpenFrameSheetCheckFormForRow(e.RowIndex);
+        }
     }
 
     #endregion
@@ -143,7 +159,7 @@ public partial class FrameSheetListForm : Form
         // 件数表示
         KakuninMaeLbl.Text = _viewModel.Summary.CNT_KAKUNINMAE.ToString();
         IchijiHozonLbl.Text = _viewModel.Summary.CNT_ICHIZON.ToString();
-        UpdateVisibleRowCountLabel();
+        UpdateVisibleRowCountLabel(); //MultiRow表示中件数は画面の挙動で変動するので別処理
     }
 
     /// <summary>
@@ -342,6 +358,31 @@ public partial class FrameSheetListForm : Form
     private void HeaderDropDownListClosed(object? sender, EventArgs e)
     {
         UpdateVisibleRowCountLabel();
+    }
+
+    /// <summary>
+    /// 指定行のDataSourceからFCOIDを取得して確認画面を開く
+    /// </summary>
+    /// <param name="rowIndex">対象行インデックス</param>
+    private void OpenFrameSheetCheckFormForRow(int rowIndex)
+    {
+        if (rowIndex < 0 || rowIndex >= gcMultiRow1.Rows.Count)
+        {
+            return;
+        }
+
+        var targetRow = gcMultiRow1.Rows[rowIndex];
+        if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
+        {
+            return;
+        }
+
+        _viewModel.SelectedItem = item;
+
+        var checkForm = new FrameSheetCheckForm();
+        checkForm.FCOID = item.ID;
+
+        checkForm.ShowDialog(this);
     }
 
     #endregion

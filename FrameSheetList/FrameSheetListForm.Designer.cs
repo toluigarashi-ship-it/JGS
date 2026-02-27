@@ -653,7 +653,7 @@ partial class FrameSheetListForm
         // KensuLbl
         // 
         KensuLbl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        KensuLbl.BackColor = SystemColors.Control;
+        KensuLbl.BackColor = Color.Transparent;
         KensuLbl.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold);
         KensuLbl.ForeColor = SystemColors.WindowText;
         KensuLbl.Location = new Point(1264, 165);
@@ -666,7 +666,7 @@ partial class FrameSheetListForm
         // KensuKenLbl
         // 
         KensuKenLbl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-        KensuKenLbl.BackColor = SystemColors.Control;
+        KensuKenLbl.BackColor = Color.Transparent;
         KensuKenLbl.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold);
         KensuKenLbl.ForeColor = SystemColors.WindowText;
         KensuKenLbl.Location = new Point(1314, 165);
