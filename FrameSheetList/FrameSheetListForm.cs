@@ -86,8 +86,8 @@ public partial class FrameSheetListForm : Form
         //検索条件コントロールとモデルを結合
         SetupConditionBindings();
 
-        //検索条件初期化
-        ClearSearchConditions();
+        //検索条件初期化（初回表示時のみ未確認ON）
+        InitializeSearchConditionsForFirstDisplay();
 
         //MultiRowにデータソースバインド
         GcMultiRow1.DataSource = _viewModel.Items;
@@ -282,6 +282,14 @@ public partial class FrameSheetListForm : Form
     private void ClearSearchConditions()
     {
         _viewModel.Conditions.Clear();
+    }
+
+    /// <summary>
+    /// 初回表示時の検索条件を初期化する（未確認のみON）
+    /// </summary>
+    private void InitializeSearchConditionsForFirstDisplay()
+    {
+        _viewModel.Conditions.InitializeForFirstDisplay();
     }
 
     /// <summary>
