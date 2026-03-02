@@ -649,6 +649,7 @@ partial class FrameSheetListForm
         MinimumSize = new Size(1366, 728);
         Name = "FrameSheetListForm";
         Text = "車台番号連絡票取込一覧";
+        FormClosed += FrameSheetListForm_FormClosed;
         Load += FrameSheetListForm_Load;
         Shown += FrameSheetListForm_Shown;
         SearchCondGcContainer.ResumeLayout(false);

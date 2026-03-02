@@ -53,13 +53,10 @@ public partial class FrameSheetListForm : Form
         InitializeComponent();
 
         // ---- NLogの設定 ----
-        //NLog.configの読み込みと初期化
+        //NLog.configの読み込みと初期化（全体での初期化があれば要適応）
         LogManager.Setup().LoadConfigurationFromFile("NLog.config");
         Log.Initialize();
-
         Log.Info("車台番号連絡表取込一覧画面　開始");
-
-        this.FormClosed += FrameSheetListForm_FormClosed;
 
         //Configの設定取得
         _connectionString = DbConnection.GetSqlConnectionString();
@@ -159,7 +156,7 @@ public partial class FrameSheetListForm : Form
         // ダブルクリックされたセルが行ヘッダセルならOK
         if (GcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
         {
-            OpenFrameSheetCheckFormForRow(e.RowIndex);
+            //OpenFrameSheetCheckFormForRow(e.RowIndex);
         }
     }
 
@@ -170,6 +167,15 @@ public partial class FrameSheetListForm : Form
     {
         this.Close();
     }
+
+    /// <summary>
+    /// フォームクローズ後の処理
+    /// </summary>
+    private void FrameSheetListForm_FormClosed(object? sender, FormClosedEventArgs e)
+    {
+        Log.Info("車台番号連絡表取込一覧画面　終了");
+    }
+
     #endregion
 
     #region Privateメソッド
@@ -495,16 +501,9 @@ public partial class FrameSheetListForm : Form
 
         Log.Info($"確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
 
+        Clipboard.SetText("Index:" + keyIndex.ToString() + Environment.NewLine + string.Join(Environment.NewLine, keyList.Select(x => $"Type:{x.Type}, Id:{x.Id}")));
         using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
-        checkForm.ShowDialog(this);
-    }
-
-    /// <summary>
-    /// フォームクローズ後の処理
-    /// </summary>
-    private void FrameSheetListForm_FormClosed(object? sender, FormClosedEventArgs e)
-    {
-        Log.Info("車台番号連絡表取込一覧画面　終了");
+        checkForm.Show(this);
     }
 
     #endregion
