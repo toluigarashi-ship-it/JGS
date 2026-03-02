@@ -2,12 +2,14 @@
 using System.Linq;
 using System.Windows.Forms;
 using Common.Db;
+using Common.Logging;
 using DesktopApp.DesktopCommon.ControlManager;
 using DesktopApp.DesktopCommon.DataAccess;
 using DesktopApp.FrameSheetCheck;
 using GrapeCity.Win.MultiRow;
 using Microsoft.VisualBasic.ApplicationServices;
 using MultiRowTemplateCreate.Templates;
+using NLog;
 
 namespace DesktopApp.FrameSheetList;
 
@@ -49,6 +51,15 @@ public partial class FrameSheetListForm : Form
     public FrameSheetListForm()
     {
         InitializeComponent();
+
+        // ---- NLogの設定 ----
+        //NLog.configの読み込みと初期化
+        LogManager.Setup().LoadConfigurationFromFile("NLog.config");
+        Log.Initialize();
+
+        Log.Info("車台番号連絡表取込一覧画面　開始");
+
+        this.FormClosed += FrameSheetListForm_FormClosed;
 
         //Configの設定取得
         _connectionString = DbConnection.GetSqlConnectionString();
@@ -247,6 +258,8 @@ public partial class FrameSheetListForm : Form
     {
         try
         {
+            Log.Info($"一覧検索 開始: FrmNo={_viewModel.Conditions.CondFRMNO}, FrmSerNo={_viewModel.Conditions.CondFRMSERNO}, HchkykNo={_viewModel.Conditions.CondHCHKYKNO}");
+
             UseWaitCursor = true;
             GcMultiRow1.Enabled = false;
             SearchBtn.Enabled = false;
@@ -255,9 +268,13 @@ public partial class FrameSheetListForm : Form
             await _logic.SearchAsync(_viewModel);
 
             BindViewModel();
+
+            Log.Info($"一覧検索 終了: 件数={_viewModel.Items.Count}");
         }
         catch (Exception ex)
         {
+            Log.Error(ex, "一覧検索に失敗しました。");
+
             MessageBox.Show(
                 "一覧の取得に失敗しました。\r" +
                 "message:" + ex.Message,
@@ -476,8 +493,18 @@ public partial class FrameSheetListForm : Form
 
         _viewModel.SelectedItem = item;
 
+        Log.Info($"確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
+
         using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
         checkForm.ShowDialog(this);
+    }
+
+    /// <summary>
+    /// フォームクローズ後の処理
+    /// </summary>
+    private void FrameSheetListForm_FormClosed(object? sender, FormClosedEventArgs e)
+    {
+        Log.Info("車台番号連絡表取込一覧画面　終了");
     }
 
     #endregion
