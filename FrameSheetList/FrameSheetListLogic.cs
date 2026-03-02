@@ -38,6 +38,14 @@ internal sealed class FrameSheetListLogic
     FROM dbo.JGSVOCRLST
     """;
 
+    private const string SelectGlobalSummarySql = """
+    SELECT
+        COUNT(1) AS CNT_TOTAL,
+        SUM(CASE WHEN STATUS IN (9, 99) THEN 1 ELSE 0 END) AS CNT_KAKUNINMAE,
+        SUM(CASE WHEN STATUS = 1 THEN 1 ELSE 0 END) AS CNT_ICHIZON
+    FROM dbo.JGSVOCRLST;
+    """;
+
     private readonly string _connectionString;
     private readonly string _userId;
 
@@ -98,12 +106,16 @@ internal sealed class FrameSheetListLogic
         var cond = vm.Conditions ?? new FrameSheetListSearchConditions();
 
         var items = await FetchItemsFromViewByConditionsAsync(cond, ct).ConfigureAwait(false);
+        var globalSummary = await FetchGlobalSummaryFromViewAsync(ct).ConfigureAwait(false);
 
         vm.Items = items;
+        vm.FilteredSummary.CNT_TOTAL = items.Count;
+        vm.FilteredSummary.CNT_KAKUNINMAE = items.Count(x => x.STATUS == 9 || x.STATUS == 99);
+        vm.FilteredSummary.CNT_ICHIZON = items.Count(x => x.STATUS == 1);
 
-        vm.Summary.CNT_TOTAL = items.Count;
-        vm.Summary.CNT_KAKUNINMAE = items.Count(x => x.STATUS == 9 || x.STATUS == 99);
-        vm.Summary.CNT_ICHIZON = items.Count(x => x.STATUS == 1);
+        vm.GlobalSummary.CNT_TOTAL = globalSummary.CNT_TOTAL;
+        vm.GlobalSummary.CNT_KAKUNINMAE = globalSummary.CNT_KAKUNINMAE;
+        vm.GlobalSummary.CNT_ICHIZON = globalSummary.CNT_ICHIZON;
     }
 
     #endregion
@@ -371,6 +383,25 @@ internal sealed class FrameSheetListLogic
 
         var rows = await con.QueryAsync<FrameSheetListRowViewModel>(cmd).ConfigureAwait(false);
         return rows.ToList();
+    }
+
+    /// <summary>
+    /// View全件を対象にした件数サマリを取得する
+    /// </summary>
+    /// <param name="ct">処理を中断するためのキャンセルトークン。</param>
+    /// <returns>件数サマリ。</returns>
+    private async Task<FrameSheetListSummary> FetchGlobalSummaryFromViewAsync(CancellationToken ct)
+    {
+        using var con = new SqlConnection(_connectionString);
+
+        var cmd = new CommandDefinition(
+            commandText: SelectGlobalSummarySql,
+            commandType: CommandType.Text,
+            commandTimeout: 10,
+            cancellationToken: ct);
+
+        var summary = await con.QuerySingleAsync<FrameSheetListSummary>(cmd).ConfigureAwait(false);
+        return summary;
     }
 
     #endregion

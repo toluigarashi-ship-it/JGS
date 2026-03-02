@@ -19,8 +19,11 @@ internal sealed class FrameSheetListViewModel
     /// <summary>検索条件</summary>
     public FrameSheetListSearchConditions Conditions { get; set; } = new FrameSheetListSearchConditions();
 
-    /// <summary>表示用サマリ</summary>
-    public FrameSheetListSummary Summary { get; set; } = new FrameSheetListSummary();
+    /// <summary>検索結果の表示用サマリ</summary>
+    public FrameSheetListSummary FilteredSummary { get; set; } = new FrameSheetListSummary();
+
+    /// <summary>View全件を対象にした表示用サマリ</summary>
+    public FrameSheetListSummary GlobalSummary { get; set; } = new FrameSheetListSummary();
 }
 
 /// <summary>

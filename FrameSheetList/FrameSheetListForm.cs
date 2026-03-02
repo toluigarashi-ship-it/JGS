@@ -164,8 +164,8 @@ public partial class FrameSheetListForm : Form
         gcMultiRow1.DataSource = _viewModel.Items;
 
         // 件数表示
-        KakuninMaeLbl.Text = _viewModel.Summary.CNT_KAKUNINMAE.ToString();
-        IchijiHozonLbl.Text = _viewModel.Summary.CNT_ICHIZON.ToString();
+        KakuninMaeLbl.Text = _viewModel.GlobalSummary.CNT_KAKUNINMAE.ToString();
+        IchijiHozonLbl.Text = _viewModel.GlobalSummary.CNT_ICHIZON.ToString();
         UpdateVisibleRowCountLabel(); //MultiRow表示中件数は画面の挙動で変動するので別処理
     }
 
