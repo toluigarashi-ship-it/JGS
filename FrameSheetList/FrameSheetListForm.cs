@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common.Db;
 using Common.Logging;
@@ -62,7 +63,7 @@ public partial class FrameSheetListForm : Form
         _connectionString = DbConnection.GetSqlConnectionString();
 
         //ログインID
-        if (DesktopApp.Properties.Settings.Default.SavedLoginId == null)
+        if (string.IsNullOrWhiteSpace(DesktopApp.Properties.Settings.Default.SavedLoginId))
         {
             throw new ArgumentException("Settings.Default.SavedLoginIdの設定が不正です。");
         }
@@ -108,7 +109,7 @@ public partial class FrameSheetListForm : Form
     /// <summary>
     /// フォーム表示後のイベント
     /// </summary>
-    private void FrameSheetListForm_Shown(object sender, EventArgs e)
+    private async void FrameSheetListForm_Shown(object sender, EventArgs e)
     {
         if (this._isFirstShown)
         {
@@ -122,15 +123,15 @@ public partial class FrameSheetListForm : Form
         }));
 
         this._isFirstShown = true;
-        SearchExecute();
+        await SearchExecuteAsync();
     }
 
     /// <summary>
     /// 検索ボタン押下時のイベント
     /// </summary>
-    private void SearchBtn_Click(object sender, EventArgs e)
+    private async void SearchBtn_Click(object sender, EventArgs e)
     {
-        SearchExecute();
+        await SearchExecuteAsync();
     }
 
     /// <summary>
@@ -260,8 +261,13 @@ public partial class FrameSheetListForm : Form
     /// <summary>
     /// 検索ボタン・初回表示時用：検索処理の実行時の画面処理
     /// </summary>
-    private async void SearchExecute()
+    private async Task SearchExecuteAsync()
     {
+        if (!ValidateSearchConditions())
+        {
+            return;
+        }
+
         try
         {
             Log.Info($"一覧検索 開始: FrmNo={_viewModel.Conditions.CondFRMNO}, FrmSerNo={_viewModel.Conditions.CondFRMSERNO}, HchkykNo={_viewModel.Conditions.CondHCHKYKNO}");
@@ -296,6 +302,29 @@ public partial class FrameSheetListForm : Form
             ClearBtn.Enabled = true;
             GcMultiRow1.ClearSelection();
         }
+    }
+
+    /// <summary>
+    /// 検索条件の妥当性を確認する
+    /// </summary>
+    /// <returns>妥当な場合true</returns>
+    private bool ValidateSearchConditions()
+    {
+        var from = _viewModel.Conditions.CondIMPDTFrom;
+        var to = _viewModel.Conditions.CondIMPDTTo;
+
+        if (from.HasValue && to.HasValue && from.Value.Date > to.Value.Date)
+        {
+            MessageBox.Show(
+                "取込日の検索条件が不正です。\rFromはTo以前の日付を指定してください。",
+                "検索条件エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return false;
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -475,35 +504,49 @@ public partial class FrameSheetListForm : Form
     /// <param name="rowIndex">対象行インデックス</param>
     private void OpenFrameSheetCheckFormForRow(int rowIndex)
     {
-        if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
+        try
         {
-            return;
-        }
+            if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
+            {
+                return;
+            }
 
-        var targetRow = GcMultiRow1.Rows[rowIndex];
-        if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
+            var targetRow = GcMultiRow1.Rows[rowIndex];
+            if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
+            {
+                return;
+            }
+
+            var keyList = CreateVisibleKeyList();
+            if (keyList.Count == 0)
+            {
+                return;
+            }
+
+            if (!TryGetVisibleKeyIndex(rowIndex, out var keyIndex))
+            {
+                return;
+            }
+
+            _viewModel.SelectedItem = item;
+
+            Log.Info($"確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
+
+            Clipboard.SetText("Index:" + keyIndex.ToString() + Environment.NewLine + string.Join(Environment.NewLine, keyList.Select(x => $"Type:{x.Type}, Id:{x.Id}")));
+            using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
+            checkForm.Show(this);
+        }
+        catch (Exception ex)
         {
-            return;
+            Log.Error(ex, "確認画面の表示に失敗しました。");
+
+            MessageBox.Show(
+                "確認画面の表示に失敗しました。\r" +
+                "message:" + ex.Message,
+                "確認画面表示エラー",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
         }
-
-        var keyList = CreateVisibleKeyList();
-        if (keyList.Count == 0)
-        {
-            return;
-        }
-
-        if (!TryGetVisibleKeyIndex(rowIndex, out var keyIndex))
-        {
-            return;
-        }
-
-        _viewModel.SelectedItem = item;
-
-        Log.Info($"確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
-
-        Clipboard.SetText("Index:" + keyIndex.ToString() + Environment.NewLine + string.Join(Environment.NewLine, keyList.Select(x => $"Type:{x.Type}, Id:{x.Id}")));
-        using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
-        checkForm.Show(this);
     }
 
     #endregion
