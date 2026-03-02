@@ -167,7 +167,7 @@ internal sealed class FrameSheetListSearchConditions : INotifyPropertyChanged
         this.CondCSVTYP_Normal = false;
         this.CondCSVTYP_Tmt = false;
 
-        this.CondSTS_Unregistered = true;
+        this.CondSTS_Unregistered = false;
         this.CondSTS_Temporary = false;
         this.CondSTS_ResendRequest = false;
         this.CondSTS_Confirmed = false;
@@ -180,6 +180,15 @@ internal sealed class FrameSheetListSearchConditions : INotifyPropertyChanged
         this.CondFRMSERNO = null;
         this.CondSTRNM = null;
         this.CondKKYKNM = null;
+    }
+
+    /// <summary>
+    /// 初回表示時の検索条件へ初期化する
+    /// </summary>
+    public void InitializeForFirstDisplay()
+    {
+        this.Clear();
+        this.CondSTS_Unregistered = true;
     }
 
     private void OnPropertyChanged([CallerMemberName] string? name = null)
