@@ -148,8 +148,7 @@ public partial class FrameSheetListForm : Form
         // ダブルクリックされたセルが行ヘッダセルならOK
         if (GcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
         {
-            MessageBox.Show($"ここでチェック画面表示　行番号：{e.RowIndex}");
-            //OpenFrameSheetCheckFormForRow(e.RowIndex);
+            OpenFrameSheetCheckFormForRow(e.RowIndex);
         }
     }
 
@@ -385,30 +384,101 @@ public partial class FrameSheetListForm : Form
         UpdateVisibleRowCountLabel();
     }
 
-    ///// <summary>
-    ///// 指定行のDataSourceからFCOIDを取得して確認画面を開く
-    ///// </summary>
-    ///// <param name="rowIndex">対象行インデックス</param>
-    //private void OpenFrameSheetCheckFormForRow(int rowIndex)
-    //{
-    //    if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
-    //    {
-    //        return;
-    //    }
+    /// <summary>
+    /// 現在表示中のgcMultiRow1データから、確認画面遷移に必要なキー一覧を生成する
+    /// </summary>
+    /// <returns>(Type, Id)のリスト</returns>
+    private List<(int Type, int Id)> CreateVisibleKeyList()
+    {
+        var keyList = new List<(int Type, int Id)>();
 
-    //    var targetRow = GcMultiRow1.Rows[rowIndex];
-    //    if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
-    //    {
-    //        return;
-    //    }
+        foreach (Row row in GcMultiRow1.Rows)
+        {
+            if (!row.Visible)
+            {
+                continue;
+            }
 
-    //    _viewModel.SelectedItem = item;
+            if (row.DataBoundItem is FrameSheetListRowViewModel item)
+            {
+                keyList.Add((item.CSVTYP, item.ID));
+            }
+        }
 
-    //    var checkForm = new FrameSheetCheckForm();
-    //    checkForm.FCOID = item.ID;
+        return keyList;
+    }
 
-    //    checkForm.ShowDialog(this);
-    //}
+    /// <summary>
+    /// 指定された行インデックスが、現在表示中キー一覧の何番目かを取得する
+    /// </summary>
+    /// <param name="rowIndex">gcMultiRow1上の行インデックス</param>
+    /// <param name="keyIndex">表示中キー一覧のインデックス</param>
+    /// <returns>取得可否</returns>
+    private bool TryGetVisibleKeyIndex(int rowIndex, out int keyIndex)
+    {
+        keyIndex = -1;
+
+        if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
+        {
+            return false;
+        }
+
+        var visibleDataRowIndex = 0;
+
+        for (var i = 0; i < GcMultiRow1.Rows.Count; i++)
+        {
+            var row = GcMultiRow1.Rows[i];
+
+            if (!row.Visible || row.DataBoundItem is not FrameSheetListRowViewModel)
+            {
+                continue;
+            }
+
+            if (i == rowIndex)
+            {
+                keyIndex = visibleDataRowIndex;
+                return true;
+            }
+
+            visibleDataRowIndex++;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// 指定行を起点に確認画面を開く
+    /// </summary>
+    /// <param name="rowIndex">対象行インデックス</param>
+    private void OpenFrameSheetCheckFormForRow(int rowIndex)
+    {
+        if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
+        {
+            return;
+        }
+
+        var targetRow = GcMultiRow1.Rows[rowIndex];
+        if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
+        {
+            return;
+        }
+
+        var keyList = CreateVisibleKeyList();
+        if (keyList.Count == 0)
+        {
+            return;
+        }
+
+        if (!TryGetVisibleKeyIndex(rowIndex, out var keyIndex))
+        {
+            return;
+        }
+
+        _viewModel.SelectedItem = item;
+
+        using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
+        checkForm.ShowDialog(this);
+    }
 
     #endregion
 
