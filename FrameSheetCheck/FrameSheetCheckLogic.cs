@@ -1,7 +1,7 @@
-﻿using Common.Db;
+﻿using System.Text;
+using Common.Db;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using System.Text;
 
 namespace DesktopApp.FrameSheetCheck;
 
@@ -136,11 +136,12 @@ internal class FrameSheetCheckLogic
     /// </para>
     /// </summary>
     /// <param name="fcoid">取込ID</param>
+    /// <param name="csvTyp">CSV種類(1:通常/2:TMT専用)</param>
     /// <returns>
     /// 初期表示用の View
     /// 対象データが存在しない場合は null
     /// </returns>
-    internal FrameSheetCheckViewModel? LoadInitial(int fcoid)
+    internal FrameSheetCheckViewModel? LoadInitial(int fcoid, int csvTyp)
     {
         using var db = new DbAccess(_connectionString);
 
@@ -169,15 +170,16 @@ internal class FrameSheetCheckLogic
                 @"
                 SELECT COUNT(1)
                 FROM JGSTFRMCSVOCRCHK
-                WHERE FOCFCOID = @FOCFCOID;
-                ", new { FOCFCOID = fcoid });
+                WHERE FOCFCOID = @FOCFCOID
+                AND   FOCCSVTYP =  @FOCCSVTYP;
+                ", new { FOCFCOID = fcoid, FOCCSVTYP = csvTyp });
 
             //3.無ければ FCO → FOC マッピングして INSERT
             if (chkExists == 0)
             {
                 try
                 {
-                    InsertFromOcr(db, fcoid);
+                    InsertFromOcr(db, fcoid, csvTyp);
                 }
                 catch (SqlException ex) when (ex.Number is 2627 or 2601)
                 {
@@ -190,6 +192,7 @@ internal class FrameSheetCheckLogic
                 @"
                 SELECT
                     FOCFCOID,
+                    FOCCSVTYP,
                     FOCIMPFILENM,
                     FOCIMPRCDCNT,
                     FOCFILENM,
@@ -277,8 +280,9 @@ internal class FrameSheetCheckLogic
                     FOCUPDDATE,
                     FOCUPDUSR
                 FROM JGSTFRMCSVOCRCHK
-                WHERE FOCFCOID = @FOCFCOID;
-                ", new { FOCFCOID = fcoid }).FirstOrDefault();
+                WHERE FOCFCOID = @FOCFCOID
+                AND   FOCCSVTYP =  @FOCCSVTYP;
+                ", new { FOCFCOID = fcoid, FOCCSVTYP = csvTyp }).FirstOrDefault();
 
             if (view is null)
             {
@@ -736,6 +740,7 @@ internal class FrameSheetCheckLogic
             INSERT INTO dbo.JGSTFRMCSVOCRCHK
             (
                 FOCFCOID,
+                FOCCSVTYP,
                 FOCIMPFILENM,
                 FOCIMPRCDCNT,
                 FOCFILENM,
@@ -824,6 +829,7 @@ internal class FrameSheetCheckLogic
             VALUES
             (
                 @FOCFCOID,
+                @FOCCSVTYP,
                 @FOCIMPFILENM,
                 @FOCIMPRCDCNT,
                 @FOCFILENM,
@@ -994,6 +1000,7 @@ internal class FrameSheetCheckLogic
                 FOCUPDUSR       = @FOCUPDUSR
             WHERE
                 FOCFCOID = @FOCFCOID
+                FOCCSVTYP = @FOCCSVTYP
                 AND FOCUPDDATE = @OldUpdDate;
             ",
             param);
@@ -1032,12 +1039,14 @@ internal class FrameSheetCheckLogic
     /// </summary>
     /// <param name="db">DbAccessオブジェクト</param>
     /// <param name="fcoid">取込ID</param>
-    private void InsertFromOcr(DbAccess db, int fcoid)
+    /// <param name="csvTyp">CSV種類（1:通常OCR、2TMT専用OCR）</param>
+    private void InsertFromOcr(DbAccess db, int fcoid, int csvTyp)
     {
         var ocr = LoadOcr(db, fcoid);
         var save = CreateSaveModelFromOcr(ocr);
 
         var now = DateTime.Now;
+        save.FOCCSVTYP = csvTyp;    //CSV種類
         save.FOCTENMATSU = 0;       //顛末
         save.FOCSTS = 9;            //9:初期Insert
         save.FOCCNFDATE = null;     //確定日時

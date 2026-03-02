@@ -15,6 +15,9 @@ internal sealed class FrameSheetCheckSaveModel
     /// <summary>取込ID（取込テーブル FCOID）</summary>
     public int FOCFCOID { get; set; }
 
+    /// <summary>CSV種類(通常/TMT専用)</summary>
+    public int FOCCSVTYP { get; set; }
+
     /// <summary>取込ファイル名</summary>
     public string? FOCIMPFILENM { get; set; }
 

@@ -4,7 +4,6 @@ using Common.Logging;
 using DesktopApp.DesktopCommon.ControlManager;
 using DesktopApp.DesktopCommon.Conversion;
 using DesktopApp.DesktopCommon.DataAccess;
-using DesktopApp.FrameSheetCheck;
 using GrapeCity.Win.Editors;
 using NLog;
 using PdfiumViewer;
@@ -61,6 +60,15 @@ public partial class FrameSheetCheckForm : Form
     /// </summary>
     private FrameSheetCheckSaveModel? _initialSnapshot;
 
+    /// <summary>
+    /// 一覧データ
+    /// </summary>
+    private List<(int Type, int Id)> _keyList;
+
+    /// <summary>
+    /// 現在のindex
+    /// </summary>
+    private int _index;
     #endregion
 
     #region コンストラクタ
@@ -68,9 +76,14 @@ public partial class FrameSheetCheckForm : Form
     /// <summary>
     /// 車台番号連絡票確認画面フォームの実装
     /// </summary>
-    public FrameSheetCheckForm()
+    /// <param name="keyList">
+    /// 一覧画面に表示されている取込IDのリスト
+    /// Type:　OCR:1、TMT:2
+    /// Id:　　取込ID
+    /// </param>
+    /// <param name="index">一覧画面で選択された行番号</param>
+    public FrameSheetCheckForm(List<(int Type, int Id)> keyList, int index)
     {
-
         InitializeComponent();
 
         // ---- NLogの設定 ----
@@ -98,6 +111,15 @@ public partial class FrameSheetCheckForm : Form
         // ---- ロジッククラス設定 ----
         _logic = new FrameSheetCheckLogic(_connectionString, _userId);
 
+        //引数を受け取る
+        _keyList = keyList;
+        _index = index;
+    }
+
+    // 旧版互換（idのみ）
+    public FrameSheetCheckForm()
+        : this(new List<(int Type, int Id)> { (Type: 1, Id: 1) }, 0) // ※Typeの既定値は要件に合わせて
+    {
     }
 
     #endregion
@@ -130,15 +152,6 @@ public partial class FrameSheetCheckForm : Form
 
     #endregion
 
-    #region プロパティ
-
-    /// <summary>
-    /// 取込ID
-    /// フォーム起動前に設定される
-    /// </summary>
-    public int FCOID { get; set; }
-    #endregion
-
     #region イベント
 
     /// <summary>
@@ -148,46 +161,20 @@ public partial class FrameSheetCheckForm : Form
     private void FrameSheetCheckForm_Load(object sender, EventArgs e)
     {
 
-        this.SuspendLayout();
+        //実行環境に合わせて背景色を設定
+        ControlManager.AppEnvModeBackColor(this);
+
+        //エラーアイコンを点滅なしに設定する
+        _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+
         try
         {
-            //初期表示中フラグON
-            _isInitializing = true;
-
-            //画面初期値クリア
-            ClearView();
-
-            //データロード
-            var view = _logic.LoadInitial(FCOID);
-            if (view == null)
+            if (!LoadAndDisplayCurrent())
             {
-                Log.Error($"対象データなし。取込ID：{FCOID}");
-                return;
+                // 失敗したら元に戻す（任意：好みで）
+                _index--;
+                UpdateButtonState();
             }
-            if (string.IsNullOrWhiteSpace(view.FOCFILENM))
-            {
-                Log.Error($"取込データにPDFファイル名が登録されていません。取込ID：{FCOID}");
-                return;
-            }
-            string pdfFileNm = Path.Combine(_pdfFolder, view.FOCFILENM);
-            if (!File.Exists(pdfFileNm))
-            {
-                Log.Error($"PDFファイルが見つかりません。ファイル：{pdfFileNm}");
-                return;
-            }
-
-            //表示中データとして保持
-            _currentView = view;
-
-            //画面表示
-            DispView(view);
-
-            //PdfViewerの設定
-            SetPdfViewerProperty(pdfFileNm);
-
-            //エラーアイコンを点滅なしに設定する
-            _errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-
         }
         catch (Exception ex)
         {
@@ -195,14 +182,70 @@ public partial class FrameSheetCheckForm : Form
             Log.Error(ex, "画面表示中にエラーが発生しました。");
             Close();
         }
-        finally
+    }
+
+    /// <summary>
+    /// 次へボタン押下
+    /// </summary>
+    private void NextBtn_Click(object sender, EventArgs e)
+    {
+        if (_index >= _keyList.Count - 1)
         {
-            //初期表示中フラグOFF
-            _isInitializing = false;
-            this.ResumeLayout();
-            this.Refresh();
+            //末尾なら何もしない
+            return;
+        }
+        try
+        {
+            _index++;
+            if (!LoadAndDisplayCurrent())
+            {
+                // 失敗したら元に戻す（任意：好みで）
+                _index--;
+                UpdateButtonState();
+            }
+        }
+        catch (Exception ex)
+        {
+            SetExceptionLabel();
+            Log.Error(ex, "画面表示中にエラーが発生しました。");
         }
 
+    }
+
+    /// <summary>
+    /// 前へボタン押下
+    /// </summary>
+    private void PrevBtn_Click(object sender, EventArgs e)
+    {
+        if (_index <= 0)
+        {
+            //先頭なら何もしない
+            return;
+        }
+
+        try
+        {
+            _index--;
+            if (!LoadAndDisplayCurrent())
+            {
+                // 失敗したら元に戻す（任意：好みで）
+                _index++;
+                UpdateButtonState();
+            }
+        }
+        catch (Exception ex)
+        {
+            SetExceptionLabel();
+            Log.Error(ex, "画面表示中にエラーが発生しました。");
+        }
+    }
+
+    /// <summary>
+    /// 閉じるボタン押下
+    /// </summary>
+    private void CloseBtn_Click(object sender, EventArgs e)
+    {
+        Close();
     }
 
     /// <summary>
@@ -465,7 +508,69 @@ public partial class FrameSheetCheckForm : Form
 
     #endregion
 
+    public int FCOID { get; set; } 
+
     #region Privateメソッド
+
+    /// <summary>
+    /// データ取得と画面表示
+    /// </summary>
+    /// <returns>true:成功、false:失敗</returns>
+    private bool LoadAndDisplayCurrent()
+    {
+        // 初期表示中フラグON
+        _isInitializing = true;
+        Cursor.Current = Cursors.WaitCursor;
+
+        ClearView();
+
+        this.SuspendLayout();
+        try
+        {
+            var (type, id) = _keyList[_index];
+            var view = _logic.LoadInitial(id, type);
+            if (view == null)
+            {
+                Log.Error($"対象データなし。取込ID：{id}、CSV種類：{type}");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(view.FOCFILENM))
+            {
+                Log.Error($"取込データにPDFファイル名が登録されていません。取込ID：{id}、CSV種類：{type}");
+                return false;
+            }
+
+            string pdfFileNm = Path.Combine(_pdfFolder, view.FOCFILENM);
+            if (!File.Exists(pdfFileNm))
+            {
+                Log.Error($"PDFファイルが見つかりません。ファイル：{pdfFileNm}");
+                return false;
+            }
+
+            _currentView = view;
+
+            //画面左側表示
+            DispView(view);
+
+            //PdfViewerの設定
+            SetPdfViewerProperty(pdfFileNm);
+
+            UpdateButtonState(); // 前へ/次へボタンのEnabled更新
+            return true;
+        }
+        finally
+        {
+            _isInitializing = false;
+            Cursor.Current = Cursors.Default;
+            this.ResumeLayout();
+            this.Refresh();
+        }
+    }
+
+    /// <summary>
+    /// 画面クリア
+    /// </summary>
     private void ClearView()
     {
         // ============================
@@ -505,7 +610,7 @@ public partial class FrameSheetCheckForm : Form
         //車台番号
         FrmnoTxt.Text = string.Empty;
         //車両特定番号
-        FrmsernoTxt.Value = string.Empty;
+        FrmsernoTxt.Text = string.Empty;
         //■販売店記入欄■
         //担当者
         StrtntTxt.Text = string.Empty;
@@ -569,9 +674,9 @@ public partial class FrameSheetCheckForm : Form
         // ============================
         //■車両情報■
         //CSV作成日
-        CsvmkdtTxt.Text = view.FOCOCRDTTM.ToString();
+        CsvmkdtTxt.Value = view.FOCOCRDTTM;
         //CSV取込日
-        CsvimpdtTxt.Text = view.FOCIMPDT.ToString();
+        CsvimpdtTxt.Value = view.FOCIMPDT;
         ////担当チーム
         //TnttmTxt.Text = view.Kyk_TRKTNTNM ?? string.Empty;
         //発注時契約No
@@ -987,7 +1092,8 @@ public partial class FrameSheetCheckForm : Form
             _logic.Save(save);
 
             //保存後に再ロード
-            var reloaded = _logic.LoadInitial(FCOID);
+            var (type, id) = _keyList[_index];
+            var reloaded = _logic.LoadInitial(id, type);
             _currentView = reloaded;
             if (reloaded != null)
             {
@@ -1020,9 +1126,11 @@ public partial class FrameSheetCheckForm : Form
     /// <returns>FrameSheetCheckSaveModel</returns>
     private FrameSheetCheckSaveModel CollectInputToSaveModel()
     {
+        var (type, id) = _keyList[_index];
         return new FrameSheetCheckSaveModel
         {
-            FOCFCOID = FCOID,
+            FOCFCOID = id,
+            FOCCSVTYP = type,
             FOCBUNM = TnttmTxt.Text,
 
             // --------------------
@@ -1251,6 +1359,15 @@ public partial class FrameSheetCheckForm : Form
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// 次へ／前へボタン制御
+    /// </summary>
+    private void UpdateButtonState()
+    {
+        PrevBtn.Enabled = _index > 0;
+        NextBtn.Enabled = _index < _keyList.Count - 1;
     }
 
     #endregion

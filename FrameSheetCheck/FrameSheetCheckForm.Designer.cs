@@ -29,37 +29,37 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            GrapeCity.Win.Editors.Fields.DateYearField dateYearField2 = new GrapeCity.Win.Editors.Fields.DateYearField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField6 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField2 = new GrapeCity.Win.Editors.Fields.DateMonthField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField7 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateDayField dateDayField2 = new GrapeCity.Win.Editors.Fields.DateDayField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField8 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateHourField dateHourField2 = new GrapeCity.Win.Editors.Fields.DateHourField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField9 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateMinuteField dateMinuteField2 = new GrapeCity.Win.Editors.Fields.DateMinuteField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField10 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateSecondField dateSecondField2 = new GrapeCity.Win.Editors.Fields.DateSecondField();
-            GrapeCity.Win.Editors.Fields.DateYearField dateYearField1 = new GrapeCity.Win.Editors.Fields.DateYearField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField1 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField1 = new GrapeCity.Win.Editors.Fields.DateMonthField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField2 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateDayField dateDayField1 = new GrapeCity.Win.Editors.Fields.DateDayField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField3 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateHourField dateHourField1 = new GrapeCity.Win.Editors.Fields.DateHourField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField4 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateMinuteField dateMinuteField1 = new GrapeCity.Win.Editors.Fields.DateMinuteField();
-            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField5 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-            GrapeCity.Win.Editors.Fields.DateSecondField dateSecondField1 = new GrapeCity.Win.Editors.Fields.DateSecondField();
-            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField1 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
-            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField1 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
-            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField2 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
-            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField2 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
-            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField3 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
-            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField3 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
-            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField4 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
-            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField4 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
-            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField5 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
+            GrapeCity.Win.Editors.Fields.DateYearField dateYearField3 = new GrapeCity.Win.Editors.Fields.DateYearField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField11 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField3 = new GrapeCity.Win.Editors.Fields.DateMonthField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField12 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateDayField dateDayField3 = new GrapeCity.Win.Editors.Fields.DateDayField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField13 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateHourField dateHourField3 = new GrapeCity.Win.Editors.Fields.DateHourField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField14 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateMinuteField dateMinuteField3 = new GrapeCity.Win.Editors.Fields.DateMinuteField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField15 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateSecondField dateSecondField3 = new GrapeCity.Win.Editors.Fields.DateSecondField();
+            GrapeCity.Win.Editors.Fields.DateYearField dateYearField4 = new GrapeCity.Win.Editors.Fields.DateYearField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField16 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField4 = new GrapeCity.Win.Editors.Fields.DateMonthField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField17 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateDayField dateDayField4 = new GrapeCity.Win.Editors.Fields.DateDayField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField18 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateHourField dateHourField4 = new GrapeCity.Win.Editors.Fields.DateHourField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField19 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateMinuteField dateMinuteField4 = new GrapeCity.Win.Editors.Fields.DateMinuteField();
+            GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField20 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+            GrapeCity.Win.Editors.Fields.DateSecondField dateSecondField4 = new GrapeCity.Win.Editors.Fields.DateSecondField();
+            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField6 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
+            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField5 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
+            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField7 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
+            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField6 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
+            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField8 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
+            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField7 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
+            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField9 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
+            GrapeCity.Win.Editors.Fields.MaskLiteralField maskLiteralField8 = new GrapeCity.Win.Editors.Fields.MaskLiteralField();
+            GrapeCity.Win.Editors.Fields.MaskPatternField maskPatternField10 = new GrapeCity.Win.Editors.Fields.MaskPatternField();
             gcShortcut1 = new GrapeCity.Win.Editors.GcShortcut(components);
             StrnmTxt = new GrapeCity.Win.Editors.GcTextBox(components);
             StrtntTxt = new GrapeCity.Win.Editors.GcTextBox(components);
@@ -88,13 +88,12 @@
             CsvimpdtTxt = new GrapeCity.Win.Editors.GcDateTime(components);
             DocrcpTxt = new GrapeCity.Win.Editors.GcTextBox(components);
             FrmsernoTxt = new GrapeCity.Win.Editors.GcMask(components);
+            BucdTxt = new GrapeCity.Win.Editors.GcTextBox(components);
             TenmatsuCmb = new GrapeCity.Win.Editors.GcComboBox(components);
             dropDownButton1 = new GrapeCity.Win.Editors.DropDownButton();
-            BucdTxt = new GrapeCity.Win.Editors.GcTextBox(components);
             PdfViewer1 = new PdfiumViewer.PdfViewer();
             GcResize1 = new GrapeCity.Win.Components.GcResize(components);
             gcContainer7 = new GrapeCity.Win.Containers.GcContainer();
-            TenmatsuLbl = new Label();
             CsvmkdtLbl = new Label();
             CsvimpdtLbl = new Label();
             FrminfLbl = new Label();
@@ -169,10 +168,14 @@
             NsyytidtLbl = new Label();
             panel19 = new GrapeCity.Win.Containers.GcContainer();
             TmtpupLbl = new Label();
-            SaveMsgLbl = new Label();
+            TenmatsuLbl = new Label();
             TmpSaveBtn = new GrapeCity.Win.Buttons.GcButton();
             SaveBtn = new GrapeCity.Win.Buttons.GcButton();
+            SaveMsgLbl = new Label();
             gcResizePanel1 = new GrapeCity.Win.Containers.GcResizePanel();
+            CloseBtn = new GrapeCity.Win.Buttons.GcButton();
+            NextBtn = new GrapeCity.Win.Buttons.GcButton();
+            PrevBtn = new GrapeCity.Win.Buttons.GcButton();
             ((System.ComponentModel.ISupportInitialize)StrnmTxt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)StrtntTxt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HchukyknoTxt).BeginInit();
@@ -200,8 +203,8 @@
             ((System.ComponentModel.ISupportInitialize)CsvimpdtTxt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DocrcpTxt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FrmsernoTxt).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)TenmatsuCmb).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BucdTxt).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TenmatsuCmb).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GcResize1).BeginInit();
             gcContainer7.SuspendLayout();
             gcContainer4.SuspendLayout();
@@ -758,11 +761,11 @@
             CsvmkdtTxt.BackColor = SystemColors.Control;
             CsvmkdtTxt.BorderStyle = BorderStyle.FixedSingle;
             CsvmkdtTxt.ContentAlignment = ContentAlignment.MiddleLeft;
-            dateLiteralField6.Text = "/";
-            dateLiteralField7.Text = "/";
-            dateLiteralField9.Text = ":";
-            dateLiteralField10.Text = ":";
-            CsvmkdtTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField2, dateLiteralField6, dateMonthField2, dateLiteralField7, dateDayField2, dateLiteralField8, dateHourField2, dateLiteralField9, dateMinuteField2, dateLiteralField10, dateSecondField2 });
+            dateLiteralField11.Text = "/";
+            dateLiteralField12.Text = "/";
+            dateLiteralField14.Text = ":";
+            dateLiteralField15.Text = ":";
+            CsvmkdtTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField3, dateLiteralField11, dateMonthField3, dateLiteralField12, dateDayField3, dateLiteralField13, dateHourField3, dateLiteralField14, dateMinuteField3, dateLiteralField15, dateSecondField3 });
             CsvmkdtTxt.Font = new Font("BIZ UDゴシック", 9F);
             CsvmkdtTxt.Location = new Point(64, 4);
             CsvmkdtTxt.Name = "CsvmkdtTxt";
@@ -781,11 +784,11 @@
             CsvimpdtTxt.BackColor = SystemColors.Control;
             CsvimpdtTxt.BorderStyle = BorderStyle.FixedSingle;
             CsvimpdtTxt.ContentAlignment = ContentAlignment.MiddleLeft;
-            dateLiteralField1.Text = "/";
-            dateLiteralField2.Text = "/";
-            dateLiteralField4.Text = ":";
-            dateLiteralField5.Text = ":";
-            CsvimpdtTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField1, dateLiteralField1, dateMonthField1, dateLiteralField2, dateDayField1, dateLiteralField3, dateHourField1, dateLiteralField4, dateMinuteField1, dateLiteralField5, dateSecondField1 });
+            dateLiteralField16.Text = "/";
+            dateLiteralField17.Text = "/";
+            dateLiteralField19.Text = ":";
+            dateLiteralField20.Text = ":";
+            CsvimpdtTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField4, dateLiteralField16, dateMonthField4, dateLiteralField17, dateDayField4, dateLiteralField18, dateHourField4, dateLiteralField19, dateMinuteField4, dateLiteralField20, dateSecondField4 });
             CsvimpdtTxt.Font = new Font("BIZ UDゴシック", 9F);
             CsvimpdtTxt.Location = new Point(246, 4);
             CsvimpdtTxt.Name = "CsvimpdtTxt";
@@ -826,21 +829,21 @@
             // 
             FrmsernoTxt.BackColor = Color.White;
             FrmsernoTxt.BorderStyle = BorderStyle.FixedSingle;
-            maskPatternField1.MaxLength = 3;
-            maskPatternField1.MinLength = 3;
-            maskLiteralField1.Text = "-";
-            maskPatternField2.MaxLength = 5;
-            maskPatternField2.MinLength = 5;
-            maskLiteralField2.Text = "-";
-            maskPatternField3.MaxLength = 5;
-            maskPatternField3.MinLength = 5;
-            maskLiteralField3.Text = "-";
-            maskPatternField4.MaxLength = 5;
-            maskPatternField4.MinLength = 5;
-            maskLiteralField4.Text = "-";
-            maskPatternField5.MaxLength = 82;
-            maskPatternField5.MinLength = 10;
-            FrmsernoTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.MaskField[] { maskPatternField1, maskLiteralField1, maskPatternField2, maskLiteralField2, maskPatternField3, maskLiteralField3, maskPatternField4, maskLiteralField4, maskPatternField5 });
+            maskPatternField6.MaxLength = 3;
+            maskPatternField6.MinLength = 3;
+            maskLiteralField5.Text = "-";
+            maskPatternField7.MaxLength = 5;
+            maskPatternField7.MinLength = 5;
+            maskLiteralField6.Text = "-";
+            maskPatternField8.MaxLength = 5;
+            maskPatternField8.MinLength = 5;
+            maskLiteralField7.Text = "-";
+            maskPatternField9.MaxLength = 5;
+            maskPatternField9.MinLength = 5;
+            maskLiteralField8.Text = "-";
+            maskPatternField10.MaxLength = 82;
+            maskPatternField10.MinLength = 10;
+            FrmsernoTxt.Fields.AddRange(new GrapeCity.Win.Editors.Fields.MaskField[] { maskPatternField6, maskLiteralField5, maskPatternField7, maskLiteralField6, maskPatternField8, maskLiteralField7, maskPatternField9, maskLiteralField8, maskPatternField10 });
             FrmsernoTxt.Font = new Font("BIZ UDゴシック", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
             FrmsernoTxt.Location = new Point(121, 92);
             FrmsernoTxt.Name = "FrmsernoTxt";
@@ -849,29 +852,6 @@
             FrmsernoTxt.SingleBorderColor = Color.SteelBlue;
             FrmsernoTxt.Size = new Size(261, 19);
             FrmsernoTxt.TabIndex = 4;
-            // 
-            // TenmatsuCmb
-            // 
-            GcResize1.SetAllowResize(TenmatsuCmb, false);
-            TenmatsuCmb.BorderStyle = BorderStyle.FixedSingle;
-            TenmatsuCmb.DropDown.AllowResize = false;
-            TenmatsuCmb.DropDownStyle = ComboBoxStyle.DropDownList;
-            TenmatsuCmb.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            TenmatsuCmb.IsEditable = false;
-            TenmatsuCmb.ListHeaderPane.Height = 27;
-            TenmatsuCmb.ListHeaderPane.Visible = false;
-            TenmatsuCmb.Location = new Point(409, 644);
-            TenmatsuCmb.Name = "TenmatsuCmb";
-            TenmatsuCmb.ReadOnlyBackColor = Color.FromArgb(235, 235, 235);
-            gcShortcut1.SetShortcuts(TenmatsuCmb, new GrapeCity.Win.Editors.ShortcutCollection(new Keys[] { Keys.F2, Keys.Control | Keys.Enter }, new object[] { TenmatsuCmb, TenmatsuCmb }, new string[] { "ShortcutClear", "ApplyRecommendedValue" }));
-            TenmatsuCmb.SideButtons.AddRange(new GrapeCity.Win.Editors.SideButtonBase[] { dropDownButton1 });
-            TenmatsuCmb.SingleBorderColor = Color.SteelBlue;
-            TenmatsuCmb.Size = new Size(120, 26);
-            TenmatsuCmb.TabIndex = 3002;
-            // 
-            // dropDownButton1
-            // 
-            dropDownButton1.Name = "dropDownButton1";
             // 
             // BucdTxt
             // 
@@ -897,6 +877,29 @@
             BucdTxt.TabStop = false;
             BucdTxt.Text = "54138";
             // 
+            // TenmatsuCmb
+            // 
+            GcResize1.SetAllowResize(TenmatsuCmb, false);
+            TenmatsuCmb.BorderStyle = BorderStyle.FixedSingle;
+            TenmatsuCmb.DropDown.AllowResize = false;
+            TenmatsuCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            TenmatsuCmb.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            TenmatsuCmb.IsEditable = false;
+            TenmatsuCmb.ListHeaderPane.Height = 27;
+            TenmatsuCmb.ListHeaderPane.Visible = false;
+            TenmatsuCmb.Location = new Point(426, 658);
+            TenmatsuCmb.Name = "TenmatsuCmb";
+            TenmatsuCmb.ReadOnlyBackColor = Color.FromArgb(235, 235, 235);
+            gcShortcut1.SetShortcuts(TenmatsuCmb, new GrapeCity.Win.Editors.ShortcutCollection(new Keys[] { Keys.F2, Keys.Control | Keys.Enter }, new object[] { TenmatsuCmb, TenmatsuCmb }, new string[] { "ShortcutClear", "ApplyRecommendedValue" }));
+            TenmatsuCmb.SideButtons.AddRange(new GrapeCity.Win.Editors.SideButtonBase[] { dropDownButton1 });
+            TenmatsuCmb.SingleBorderColor = Color.SteelBlue;
+            TenmatsuCmb.Size = new Size(120, 26);
+            TenmatsuCmb.TabIndex = 4004;
+            // 
+            // dropDownButton1
+            // 
+            dropDownButton1.Name = "dropDownButton1";
+            // 
             // PdfViewer1
             // 
             PdfViewer1.BackColor = Color.SteelBlue;
@@ -905,8 +908,9 @@
             PdfViewer1.Margin = new Padding(4, 3, 4, 3);
             PdfViewer1.Name = "PdfViewer1";
             GcResize1.SetResizeMode(PdfViewer1, GrapeCity.Win.Components.ResizeMode.Layout);
-            PdfViewer1.Size = new Size(706, 674);
+            PdfViewer1.Size = new Size(706, 622);
             PdfViewer1.TabIndex = 1;
+            PdfViewer1.TabStop = false;
             // 
             // GcResize1
             // 
@@ -916,8 +920,6 @@
             // 
             // gcContainer7
             // 
-            gcContainer7.Controls.Add(TenmatsuCmb);
-            gcContainer7.Controls.Add(TenmatsuLbl);
             gcContainer7.Controls.Add(CsvmkdtLbl);
             gcContainer7.Controls.Add(CsvimpdtLbl);
             gcContainer7.Controls.Add(CsvimpdtTxt);
@@ -928,28 +930,12 @@
             gcContainer7.Controls.Add(gcContainer4);
             gcContainer7.Controls.Add(TnttmLbl);
             gcContainer7.Controls.Add(gcContainer5);
-            gcContainer7.Controls.Add(SaveMsgLbl);
-            gcContainer7.Controls.Add(TmpSaveBtn);
-            gcContainer7.Controls.Add(SaveBtn);
             gcContainer7.Location = new Point(1, 2);
             gcContainer7.Name = "gcContainer7";
             GcResize1.SetResizeMode(gcContainer7, GrapeCity.Win.Components.ResizeMode.None);
             gcContainer7.SingleBorderColor = Color.SteelBlue;
-            gcContainer7.Size = new Size(626, 680);
+            gcContainer7.Size = new Size(626, 628);
             gcContainer7.TabIndex = 3000;
-            // 
-            // TenmatsuLbl
-            // 
-            GcResize1.SetAllowResize(TenmatsuLbl, false);
-            TenmatsuLbl.BackColor = Color.SteelBlue;
-            TenmatsuLbl.Font = new Font("Yu Gothic UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            TenmatsuLbl.ForeColor = Color.White;
-            TenmatsuLbl.Location = new Point(357, 644);
-            TenmatsuLbl.Name = "TenmatsuLbl";
-            TenmatsuLbl.Size = new Size(53, 26);
-            TenmatsuLbl.TabIndex = 190;
-            TenmatsuLbl.Text = "顛末";
-            TenmatsuLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // CsvmkdtLbl
             // 
@@ -1924,41 +1910,52 @@
             TmtpupLbl.Text = "回送先";
             TmtpupLbl.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // SaveMsgLbl
+            // TenmatsuLbl
             // 
-            GcResize1.SetAllowResize(SaveMsgLbl, false);
-            SaveMsgLbl.BackColor = Color.FromArgb(235, 235, 235);
-            SaveMsgLbl.Font = new Font("Meiryo UI", 9F);
-            SaveMsgLbl.ForeColor = Color.ForestGreen;
-            SaveMsgLbl.Location = new Point(5, 623);
-            SaveMsgLbl.Name = "SaveMsgLbl";
-            SaveMsgLbl.Size = new Size(600, 19);
-            SaveMsgLbl.TabIndex = 178;
-            SaveMsgLbl.TextAlign = ContentAlignment.MiddleLeft;
+            GcResize1.SetAllowResize(TenmatsuLbl, false);
+            TenmatsuLbl.BackColor = Color.SteelBlue;
+            TenmatsuLbl.Font = new Font("Yu Gothic UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            TenmatsuLbl.ForeColor = Color.White;
+            TenmatsuLbl.Location = new Point(374, 658);
+            TenmatsuLbl.Name = "TenmatsuLbl";
+            TenmatsuLbl.Size = new Size(53, 26);
+            TenmatsuLbl.TabIndex = 4002;
+            TenmatsuLbl.Text = "顛末";
+            TenmatsuLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TmpSaveBtn
             // 
             GcResize1.SetAllowResize(TmpSaveBtn, false);
             TmpSaveBtn.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            TmpSaveBtn.Location = new Point(5, 642);
+            TmpSaveBtn.Location = new Point(3, 656);
             TmpSaveBtn.Name = "TmpSaveBtn";
             TmpSaveBtn.Size = new Size(90, 31);
-            TmpSaveBtn.TabIndex = 3001;
+            TmpSaveBtn.TabIndex = 4003;
             TmpSaveBtn.Text = "一時保存";
             TmpSaveBtn.UseVisualStyleBackColor = true;
-            TmpSaveBtn.Click += TmpSaveBtn_Click;
             // 
             // SaveBtn
             // 
             GcResize1.SetAllowResize(SaveBtn, false);
             SaveBtn.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            SaveBtn.Location = new Point(531, 642);
+            SaveBtn.Location = new Point(548, 656);
             SaveBtn.Name = "SaveBtn";
             SaveBtn.Size = new Size(79, 31);
-            SaveBtn.TabIndex = 3003;
+            SaveBtn.TabIndex = 4005;
             SaveBtn.Text = "確定";
             SaveBtn.UseVisualStyleBackColor = true;
-            SaveBtn.Click += SaveBtn_Click;
+            // 
+            // SaveMsgLbl
+            // 
+            GcResize1.SetAllowResize(SaveMsgLbl, false);
+            SaveMsgLbl.BackColor = Color.Transparent;
+            SaveMsgLbl.Font = new Font("Meiryo UI", 9F);
+            SaveMsgLbl.ForeColor = Color.ForestGreen;
+            SaveMsgLbl.Location = new Point(3, 636);
+            SaveMsgLbl.Name = "SaveMsgLbl";
+            SaveMsgLbl.Size = new Size(624, 19);
+            SaveMsgLbl.TabIndex = 4008;
+            SaveMsgLbl.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // gcResizePanel1
             // 
@@ -1966,14 +1963,55 @@
             gcResizePanel1.Controls.Add(PdfViewer1);
             gcResizePanel1.Location = new Point(633, 2);
             gcResizePanel1.Name = "gcResizePanel1";
-            gcResizePanel1.Size = new Size(714, 680);
+            gcResizePanel1.Size = new Size(714, 628);
             gcResizePanel1.TabIndex = 4000;
+            // 
+            // CloseBtn
+            // 
+            CloseBtn.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            CloseBtn.Location = new Point(1257, 654);
+            CloseBtn.Name = "CloseBtn";
+            CloseBtn.Size = new Size(90, 31);
+            CloseBtn.TabIndex = 4008;
+            CloseBtn.Text = "閉じる";
+            CloseBtn.UseVisualStyleBackColor = true;
+            CloseBtn.Click += CloseBtn_Click;
+            // 
+            // NextBtn
+            // 
+            NextBtn.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            NextBtn.Location = new Point(905, 656);
+            NextBtn.Name = "NextBtn";
+            NextBtn.Size = new Size(90, 31);
+            NextBtn.TabIndex = 4006;
+            NextBtn.Text = "次へ";
+            NextBtn.UseVisualStyleBackColor = true;
+            NextBtn.Click += NextBtn_Click;
+            // 
+            // PrevBtn
+            // 
+            PrevBtn.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            PrevBtn.Location = new Point(1015, 655);
+            PrevBtn.Name = "PrevBtn";
+            PrevBtn.Size = new Size(90, 31);
+            PrevBtn.TabIndex = 4007;
+            PrevBtn.Text = "前へ";
+            PrevBtn.UseVisualStyleBackColor = true;
+            PrevBtn.Click += PrevBtn_Click;
             // 
             // FrameSheetCheckForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(235, 235, 235);
             ClientSize = new Size(1350, 689);
+            Controls.Add(SaveMsgLbl);
+            Controls.Add(PrevBtn);
+            Controls.Add(NextBtn);
+            Controls.Add(TenmatsuCmb);
+            Controls.Add(TenmatsuLbl);
+            Controls.Add(TmpSaveBtn);
+            Controls.Add(SaveBtn);
+            Controls.Add(CloseBtn);
             Controls.Add(gcResizePanel1);
             Controls.Add(gcContainer7);
             MinimumSize = new Size(1366, 728);
@@ -2009,8 +2047,8 @@
             ((System.ComponentModel.ISupportInitialize)CsvimpdtTxt).EndInit();
             ((System.ComponentModel.ISupportInitialize)DocrcpTxt).EndInit();
             ((System.ComponentModel.ISupportInitialize)FrmsernoTxt).EndInit();
-            ((System.ComponentModel.ISupportInitialize)TenmatsuCmb).EndInit();
             ((System.ComponentModel.ISupportInitialize)BucdTxt).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TenmatsuCmb).EndInit();
             ((System.ComponentModel.ISupportInitialize)GcResize1).EndInit();
             gcContainer7.ResumeLayout(false);
             gcContainer4.ResumeLayout(false);
@@ -2058,9 +2096,6 @@
         private GrapeCity.Win.Containers.GcContainer gcContainer4;
         private GrapeCity.Win.Containers.GcContainer gcContainer5;
         private GrapeCity.Win.Editors.GcTextBox KyknoTxt;
-        private GrapeCity.Win.Buttons.GcButton TmpSaveBtn;
-        private GrapeCity.Win.Buttons.GcButton SaveBtn;
-        private Label SaveMsgLbl;
         private GrapeCity.Win.Editors.GcTextBox FrmnoTxt;
         private GrapeCity.Win.Editors.GcTextBox KataTxt;
         private GrapeCity.Win.Editors.GcTextBox CarnmTxt;
@@ -2111,9 +2146,6 @@
         private Label RitoLbl;
         private GrapeCity.Win.Buttons.GcCheckBox RitoChk;
         private GrapeCity.Win.Buttons.GcCheckBox DocarvChk;
-        private GrapeCity.Win.Editors.GcComboBox TenmatsuCmb;
-        private GrapeCity.Win.Editors.DropDownButton dropDownButton1;
-        private Label TenmatsuLbl;
         private Label KyknoconfLbl;
         private GrapeCity.Win.Buttons.GcCheckBox KyknoconfChk;
         private GrapeCity.Win.Buttons.GcButton KyknoBtn;
@@ -2158,5 +2190,14 @@
         private Label TmtpupLbl;
         private GrapeCity.Win.Containers.GcContainer HchukyknoPnl;
         private Label HchukyknoLbl;
+        private GrapeCity.Win.Editors.GcComboBox TenmatsuCmb;
+        private GrapeCity.Win.Editors.DropDownButton dropDownButton1;
+        private Label TenmatsuLbl;
+        private GrapeCity.Win.Buttons.GcButton TmpSaveBtn;
+        private GrapeCity.Win.Buttons.GcButton SaveBtn;
+        private GrapeCity.Win.Buttons.GcButton CloseBtn;
+        private GrapeCity.Win.Buttons.GcButton PrevBtn;
+        private GrapeCity.Win.Buttons.GcButton NextBtn;
+        private Label SaveMsgLbl;
     }
 }
