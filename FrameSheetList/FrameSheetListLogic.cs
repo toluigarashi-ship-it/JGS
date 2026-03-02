@@ -207,6 +207,7 @@ internal sealed class FrameSheetListLogic
 
         if (cond.CondSTS_Unregistered)
         {
+            statusLst.Add(9);
             statusLst.Add(99);
         }
 
