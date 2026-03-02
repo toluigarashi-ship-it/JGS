@@ -60,9 +60,13 @@ public partial class FrameSheetListForm : Form
         }
         _userId = DesktopApp.Properties.Settings.Default.SavedLoginId;
 
-        //MultiRowの設定
-        gcMultiRow1.Template = new FrameSheetListFormTemplate();
+        // ---- MultiRowの設定 ----
+        GcMultiRow1.Template = new FrameSheetListFormTemplate();
         HookHeaderFilterClosed();
+        //常に行全体を選択する設定
+        GcMultiRow1.ViewMode = GrapeCity.Win.MultiRow.ViewMode.Row;
+        //カレントセルの点線描画を抑制
+        GcMultiRow1.CurrentCellBorderLine = new Line(LineStyle.None, Color.Empty);
 
         //Logic生成
         _logic = new FrameSheetListLogic(_connectionString, _userId);
@@ -86,7 +90,7 @@ public partial class FrameSheetListForm : Form
         ClearSearchConditions();
 
         //MultiRowにデータソースバインド
-        gcMultiRow1.DataSource = _viewModel.Items;
+        GcMultiRow1.DataSource = _viewModel.Items;
 
         //実行環境に合わせて背景色を設定
         ControlManager.AppEnvModeBackColor(this);
@@ -135,8 +139,14 @@ public partial class FrameSheetListForm : Form
     /// </summary>
     private void GcMultiRow1_CellDoubleClick(object sender, CellEventArgs e)
     {
+        // ヘッダ（RowIndex=-1）や無効クリックを除外
+        if (e.RowIndex < 0 || e.CellIndex < 0)
+        {
+            return;
+        }
+
         // ダブルクリックされたセルが行ヘッダセルならOK
-        if (gcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
+        if (GcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
         {
             MessageBox.Show($"ここでチェック画面表示　行番号：{e.RowIndex}");
             //OpenFrameSheetCheckFormForRow(e.RowIndex);
@@ -160,8 +170,7 @@ public partial class FrameSheetListForm : Form
     private void BindViewModel()
     {
         // GcMultiRow への表示
-        // DataSourceで行ける構成ならこれが簡単（テンプレ側のDataField設定が前提）
-        gcMultiRow1.DataSource = _viewModel.Items;
+        GcMultiRow1.DataSource = _viewModel.Items;
 
         // 件数表示
         KakuninMaeLbl.Text = _viewModel.Summary.CNT_KAKUNINMAE.ToString();
@@ -176,7 +185,7 @@ public partial class FrameSheetListForm : Form
     {
         var visibleCount = 0;
 
-        foreach (Row row in gcMultiRow1.Rows)
+        foreach (Row row in GcMultiRow1.Rows)
         {
             if (row.Visible)
             {
@@ -240,7 +249,7 @@ public partial class FrameSheetListForm : Form
         try
         {
             UseWaitCursor = true;
-            gcMultiRow1.Enabled = false;
+            GcMultiRow1.Enabled = false;
             SearchBtn.Enabled = false;
             ClearBtn.Enabled = false;
 
@@ -259,10 +268,11 @@ public partial class FrameSheetListForm : Form
         }
         finally
         {
-            gcMultiRow1.Enabled = true;
+            GcMultiRow1.Enabled = true;
             UseWaitCursor = false;
             SearchBtn.Enabled = true;
             ClearBtn.Enabled = true;
+            GcMultiRow1.ClearSelection();
         }
     }
 
@@ -280,18 +290,18 @@ public partial class FrameSheetListForm : Form
     /// </summary>
     private void AdjustColumnWidths()
     {
-        var viewWidth = this.gcMultiRow1.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
+        var viewWidth = this.GcMultiRow1.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
         if (viewWidth <= 0)
         {
             return;
         }
 
-        if (this.gcMultiRow1.ColumnHeaders.Count == 0)
+        if (this.GcMultiRow1.ColumnHeaders.Count == 0)
         {
             return;
         }
 
-        var header = this.gcMultiRow1.ColumnHeaders[0];
+        var header = this.GcMultiRow1.ColumnHeaders[0];
 
         const string ExpandHeader1 = "StrNmHeader";
         const string ExpandHeader2 = "KkykNmHeader";
@@ -343,7 +353,7 @@ public partial class FrameSheetListForm : Form
     /// </summary>
     private void HookHeaderFilterClosed()
     {
-        foreach (var section in this.gcMultiRow1.Template.ColumnHeaders)
+        foreach (var section in this.GcMultiRow1.Template.ColumnHeaders)
         {
             foreach (var cell in section.Cells)
             {
@@ -367,30 +377,30 @@ public partial class FrameSheetListForm : Form
         UpdateVisibleRowCountLabel();
     }
 
-    /// <summary>
-    /// 指定行のDataSourceからFCOIDを取得して確認画面を開く
-    /// </summary>
-    /// <param name="rowIndex">対象行インデックス</param>
-    private void OpenFrameSheetCheckFormForRow(int rowIndex)
-    {
-        if (rowIndex < 0 || rowIndex >= gcMultiRow1.Rows.Count)
-        {
-            return;
-        }
+    ///// <summary>
+    ///// 指定行のDataSourceからFCOIDを取得して確認画面を開く
+    ///// </summary>
+    ///// <param name="rowIndex">対象行インデックス</param>
+    //private void OpenFrameSheetCheckFormForRow(int rowIndex)
+    //{
+    //    if (rowIndex < 0 || rowIndex >= GcMultiRow1.Rows.Count)
+    //    {
+    //        return;
+    //    }
 
-        var targetRow = gcMultiRow1.Rows[rowIndex];
-        if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
-        {
-            return;
-        }
+    //    var targetRow = GcMultiRow1.Rows[rowIndex];
+    //    if (targetRow.DataBoundItem is not FrameSheetListRowViewModel item)
+    //    {
+    //        return;
+    //    }
 
-        _viewModel.SelectedItem = item;
+    //    _viewModel.SelectedItem = item;
 
-        var checkForm = new FrameSheetCheckForm();
-        checkForm.FCOID = item.ID;
+    //    var checkForm = new FrameSheetCheckForm();
+    //    checkForm.FCOID = item.ID;
 
-        checkForm.ShowDialog(this);
-    }
+    //    checkForm.ShowDialog(this);
+    //}
 
     #endregion
 
