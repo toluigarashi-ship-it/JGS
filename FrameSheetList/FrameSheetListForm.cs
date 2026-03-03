@@ -57,7 +57,7 @@ public partial class FrameSheetListForm : Form
         //NLog.configの読み込みと初期化（全体での初期化があれば要適応）
         LogManager.Setup().LoadConfigurationFromFile("NLog.config");
         Log.Initialize();
-        Log.Info("車台番号連絡表取込一覧画面　開始");
+        Log.Info("[FrameSheetListForm] 車台番号連絡表取込一覧画面　開始");
 
         //Configの設定取得
         _connectionString = DbConnection.GetSqlConnectionString();
@@ -174,7 +174,7 @@ public partial class FrameSheetListForm : Form
     /// </summary>
     private void FrameSheetListForm_FormClosed(object? sender, FormClosedEventArgs e)
     {
-        Log.Info("車台番号連絡表取込一覧画面　終了");
+        Log.Info("[FrameSheetListForm] 車台番号連絡表取込一覧画面　終了");
     }
 
     #endregion
@@ -270,7 +270,7 @@ public partial class FrameSheetListForm : Form
 
         try
         {
-            Log.Info($"一覧検索 開始: FrmNo={_viewModel.Conditions.CondFRMNO}, FrmSerNo={_viewModel.Conditions.CondFRMSERNO}, HchkykNo={_viewModel.Conditions.CondHCHKYKNO}");
+            Log.Info($"[FrameSheetListForm] 一覧検索 開始: FrmNo={_viewModel.Conditions.CondFRMNO}, FrmSerNo={_viewModel.Conditions.CondFRMSERNO}, HchkykNo={_viewModel.Conditions.CondHCHKYKNO}");
 
             UseWaitCursor = true;
             GcMultiRow1.Enabled = false;
@@ -281,11 +281,11 @@ public partial class FrameSheetListForm : Form
 
             BindViewModel();
 
-            Log.Info($"一覧検索 終了: 件数={_viewModel.Items.Count}");
+            Log.Info($"[FrameSheetListForm] 一覧検索 終了: 件数={_viewModel.Items.Count}");
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "一覧検索に失敗しました。");
+            Log.Error(ex, "[FrameSheetListForm] 一覧検索に失敗しました。");
 
             MessageBox.Show(
                 "一覧の取得に失敗しました。\r" +
@@ -530,7 +530,7 @@ public partial class FrameSheetListForm : Form
 
             _viewModel.SelectedItem = item;
 
-            Log.Info($"確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
+            Log.Info($"[FrameSheetListForm] 確認画面遷移: CSVTYP={item.CSVTYP}, ID={item.ID}, KeyIndex={keyIndex}");
 
             Clipboard.SetText("Index:" + keyIndex.ToString() + Environment.NewLine + string.Join(Environment.NewLine, keyList.Select(x => $"Type:{x.Type}, Id:{x.Id}")));
             using var checkForm = new FrameSheetCheckForm(keyList, keyIndex);
@@ -538,7 +538,7 @@ public partial class FrameSheetListForm : Form
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "確認画面の表示に失敗しました。");
+            Log.Error(ex, "[FrameSheetListForm] 確認画面の表示に失敗しました。");
 
             MessageBox.Show(
                 "確認画面の表示に失敗しました。\r" +
