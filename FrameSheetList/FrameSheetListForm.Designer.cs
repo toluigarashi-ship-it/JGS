@@ -29,16 +29,16 @@ partial class FrameSheetListForm
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
-        GrapeCity.Win.Editors.Fields.DateYearField dateYearField1 = new GrapeCity.Win.Editors.Fields.DateYearField();
-        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField1 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-        GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField1 = new GrapeCity.Win.Editors.Fields.DateMonthField();
-        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField2 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-        GrapeCity.Win.Editors.Fields.DateDayField dateDayField1 = new GrapeCity.Win.Editors.Fields.DateDayField();
-        GrapeCity.Win.Editors.Fields.DateYearField dateYearField2 = new GrapeCity.Win.Editors.Fields.DateYearField();
-        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField3 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-        GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField2 = new GrapeCity.Win.Editors.Fields.DateMonthField();
-        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField4 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
-        GrapeCity.Win.Editors.Fields.DateDayField dateDayField2 = new GrapeCity.Win.Editors.Fields.DateDayField();
+        GrapeCity.Win.Editors.Fields.DateYearField dateYearField3 = new GrapeCity.Win.Editors.Fields.DateYearField();
+        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField5 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+        GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField3 = new GrapeCity.Win.Editors.Fields.DateMonthField();
+        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField6 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+        GrapeCity.Win.Editors.Fields.DateDayField dateDayField3 = new GrapeCity.Win.Editors.Fields.DateDayField();
+        GrapeCity.Win.Editors.Fields.DateYearField dateYearField4 = new GrapeCity.Win.Editors.Fields.DateYearField();
+        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField7 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+        GrapeCity.Win.Editors.Fields.DateMonthField dateMonthField4 = new GrapeCity.Win.Editors.Fields.DateMonthField();
+        GrapeCity.Win.Editors.Fields.DateLiteralField dateLiteralField8 = new GrapeCity.Win.Editors.Fields.DateLiteralField();
+        GrapeCity.Win.Editors.Fields.DateDayField dateDayField4 = new GrapeCity.Win.Editors.Fields.DateDayField();
         SearchCondGcContainer = new GrapeCity.Win.Containers.GcContainer();
         Status0Chk = new GrapeCity.Win.Buttons.GcCheckBox();
         Status2Chk = new GrapeCity.Win.Buttons.GcCheckBox();
@@ -46,7 +46,7 @@ partial class FrameSheetListForm
         Status99Chk = new GrapeCity.Win.Buttons.GcCheckBox();
         CsvTyp2Chk = new GrapeCity.Win.Buttons.GcCheckBox();
         CsvTyp1Chk = new GrapeCity.Win.Buttons.GcCheckBox();
-        TntUT1Chk = new GrapeCity.Win.Buttons.GcCheckBox();
+        TntUT2Chk = new GrapeCity.Win.Buttons.GcCheckBox();
         ClearBtn = new GrapeCity.Win.Buttons.GcButton();
         StrNmLbl = new Label();
         StrNmTxt = new GrapeCity.Win.Editors.GcTextBox(components);
@@ -60,7 +60,7 @@ partial class FrameSheetListForm
         HchkykNoTxt = new GrapeCity.Win.Editors.GcTextBox(components);
         CsvTypLbl = new Label();
         label2 = new Label();
-        TntUT0Chk = new GrapeCity.Win.Buttons.GcCheckBox();
+        TntUT1Chk = new GrapeCity.Win.Buttons.GcCheckBox();
         ImpDTLbl = new Label();
         label21 = new Label();
         ImpDtFrm = new GrapeCity.Win.Editors.GcDate(components);
@@ -98,7 +98,7 @@ partial class FrameSheetListForm
         SearchCondGcContainer.Controls.Add(Status99Chk);
         SearchCondGcContainer.Controls.Add(CsvTyp2Chk);
         SearchCondGcContainer.Controls.Add(CsvTyp1Chk);
-        SearchCondGcContainer.Controls.Add(TntUT1Chk);
+        SearchCondGcContainer.Controls.Add(TntUT2Chk);
         SearchCondGcContainer.Controls.Add(ClearBtn);
         SearchCondGcContainer.Controls.Add(StrNmLbl);
         SearchCondGcContainer.Controls.Add(StrNmTxt);
@@ -112,7 +112,7 @@ partial class FrameSheetListForm
         SearchCondGcContainer.Controls.Add(HchkykNoTxt);
         SearchCondGcContainer.Controls.Add(CsvTypLbl);
         SearchCondGcContainer.Controls.Add(label2);
-        SearchCondGcContainer.Controls.Add(TntUT0Chk);
+        SearchCondGcContainer.Controls.Add(TntUT1Chk);
         SearchCondGcContainer.Controls.Add(ImpDTLbl);
         SearchCondGcContainer.Controls.Add(label21);
         SearchCondGcContainer.Controls.Add(ImpDtFrm);
@@ -124,7 +124,7 @@ partial class FrameSheetListForm
         SearchCondGcContainer.Name = "SearchCondGcContainer";
         SearchCondGcContainer.SingleBorderColor = Color.SteelBlue;
         SearchCondGcContainer.Size = new Size(1342, 85);
-        SearchCondGcContainer.TabIndex = 407;
+        SearchCondGcContainer.TabIndex = 5;
         // 
         // Status0Chk
         // 
@@ -136,7 +136,7 @@ partial class FrameSheetListForm
         Status0Chk.Name = "Status0Chk";
         Status0Chk.Padding = new Padding(1);
         Status0Chk.Size = new Size(68, 19);
-        Status0Chk.TabIndex = 483;
+        Status0Chk.TabIndex = 7;
         Status0Chk.Text = "確定済";
         Status0Chk.UseVisualStyleBackColor = true;
         // 
@@ -150,7 +150,7 @@ partial class FrameSheetListForm
         Status2Chk.Name = "Status2Chk";
         Status2Chk.Padding = new Padding(1);
         Status2Chk.Size = new Size(90, 19);
-        Status2Chk.TabIndex = 482;
+        Status2Chk.TabIndex = 6;
         Status2Chk.Text = "再送付依頼";
         Status2Chk.UseVisualStyleBackColor = true;
         // 
@@ -164,7 +164,7 @@ partial class FrameSheetListForm
         Status1Chk.Name = "Status1Chk";
         Status1Chk.Padding = new Padding(1);
         Status1Chk.Size = new Size(80, 19);
-        Status1Chk.TabIndex = 481;
+        Status1Chk.TabIndex = 5;
         Status1Chk.Text = "一時保存";
         Status1Chk.UseVisualStyleBackColor = true;
         // 
@@ -178,7 +178,7 @@ partial class FrameSheetListForm
         Status99Chk.Name = "Status99Chk";
         Status99Chk.Padding = new Padding(1);
         Status99Chk.Size = new Size(68, 19);
-        Status99Chk.TabIndex = 480;
+        Status99Chk.TabIndex = 4;
         Status99Chk.Text = "未登録";
         Status99Chk.UseVisualStyleBackColor = true;
         // 
@@ -192,7 +192,7 @@ partial class FrameSheetListForm
         CsvTyp2Chk.Name = "CsvTyp2Chk";
         CsvTyp2Chk.Padding = new Padding(1);
         CsvTyp2Chk.Size = new Size(68, 19);
-        CsvTyp2Chk.TabIndex = 479;
+        CsvTyp2Chk.TabIndex = 14;
         CsvTyp2Chk.Text = "TMT";
         CsvTyp2Chk.UseVisualStyleBackColor = true;
         // 
@@ -206,23 +206,23 @@ partial class FrameSheetListForm
         CsvTyp1Chk.Name = "CsvTyp1Chk";
         CsvTyp1Chk.Padding = new Padding(1);
         CsvTyp1Chk.Size = new Size(68, 19);
-        CsvTyp1Chk.TabIndex = 478;
+        CsvTyp1Chk.TabIndex = 13;
         CsvTyp1Chk.Text = "通常";
         CsvTyp1Chk.UseVisualStyleBackColor = true;
         // 
-        // TntUT1Chk
+        // TntUT2Chk
         // 
-        TntUT1Chk.FlatAppearance.BorderColor = Color.SteelBlue;
-        TntUT1Chk.FlatAppearance.CheckedBackColor = Color.SandyBrown;
-        TntUT1Chk.FlatStyle = GrapeCity.Win.Common.FlatStyleEx.Flat;
-        TntUT1Chk.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-        TntUT1Chk.Location = new Point(171, 4);
-        TntUT1Chk.Name = "TntUT1Chk";
-        TntUT1Chk.Padding = new Padding(1);
-        TntUT1Chk.Size = new Size(68, 19);
-        TntUT1Chk.TabIndex = 477;
-        TntUT1Chk.Text = "登録UT";
-        TntUT1Chk.UseVisualStyleBackColor = true;
+        TntUT2Chk.FlatAppearance.BorderColor = Color.SteelBlue;
+        TntUT2Chk.FlatAppearance.CheckedBackColor = Color.SandyBrown;
+        TntUT2Chk.FlatStyle = GrapeCity.Win.Common.FlatStyleEx.Flat;
+        TntUT2Chk.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+        TntUT2Chk.Location = new Point(171, 4);
+        TntUT2Chk.Name = "TntUT2Chk";
+        TntUT2Chk.Padding = new Padding(1);
+        TntUT2Chk.Size = new Size(68, 19);
+        TntUT2Chk.TabIndex = 2;
+        TntUT2Chk.Text = "書類UT";
+        TntUT2Chk.UseVisualStyleBackColor = true;
         // 
         // ClearBtn
         // 
@@ -231,7 +231,7 @@ partial class FrameSheetListForm
         ClearBtn.Location = new Point(1243, 48);
         ClearBtn.Name = "ClearBtn";
         ClearBtn.Size = new Size(90, 31);
-        ClearBtn.TabIndex = 476;
+        ClearBtn.TabIndex = 26;
         ClearBtn.Text = "クリア";
         ClearBtn.UseVisualStyleBackColor = true;
         ClearBtn.Click += ClearBtn_Click;
@@ -244,7 +244,7 @@ partial class FrameSheetListForm
         StrNmLbl.Location = new Point(3, 49);
         StrNmLbl.Name = "StrNmLbl";
         StrNmLbl.Size = new Size(86, 17);
-        StrNmLbl.TabIndex = 475;
+        StrNmLbl.TabIndex = 21;
         StrNmLbl.Text = "販売店名";
         StrNmLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -259,13 +259,14 @@ partial class FrameSheetListForm
         StrNmTxt.Font = new Font("BIZ UDゴシック", 9F);
         StrNmTxt.GridLine = new GrapeCity.Win.Editors.Line(GrapeCity.Win.Editors.LineStyle.Single, SystemColors.ControlDark);
         StrNmTxt.Location = new Point(89, 49);
+        StrNmTxt.MaxLength = 40;
         StrNmTxt.Name = "StrNmTxt";
         StrNmTxt.Padding = new Padding(3, 1, 1, 1);
         StrNmTxt.ReadOnlyBackColor = Color.AliceBlue;
         StrNmTxt.ReadOnlyForeColor = SystemColors.WindowText;
         StrNmTxt.SingleBorderColor = Color.SteelBlue;
         StrNmTxt.Size = new Size(250, 17);
-        StrNmTxt.TabIndex = 474;
+        StrNmTxt.TabIndex = 22;
         StrNmTxt.Text = "1234567890123456789012345678901234567890";
         // 
         // KkykNmLbl
@@ -276,7 +277,7 @@ partial class FrameSheetListForm
         KkykNmLbl.Location = new Point(362, 49);
         KkykNmLbl.Name = "KkykNmLbl";
         KkykNmLbl.Size = new Size(86, 17);
-        KkykNmLbl.TabIndex = 473;
+        KkykNmLbl.TabIndex = 23;
         KkykNmLbl.Text = "お客様名";
         KkykNmLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -291,13 +292,14 @@ partial class FrameSheetListForm
         KkykNmTxt.Font = new Font("BIZ UDゴシック", 9F);
         KkykNmTxt.GridLine = new GrapeCity.Win.Editors.Line(GrapeCity.Win.Editors.LineStyle.Single, SystemColors.ControlDark);
         KkykNmTxt.Location = new Point(448, 49);
+        KkykNmTxt.MaxLength = 40;
         KkykNmTxt.Name = "KkykNmTxt";
         KkykNmTxt.Padding = new Padding(3, 1, 1, 1);
         KkykNmTxt.ReadOnlyBackColor = Color.AliceBlue;
         KkykNmTxt.ReadOnlyForeColor = SystemColors.WindowText;
         KkykNmTxt.SingleBorderColor = Color.SteelBlue;
         KkykNmTxt.Size = new Size(250, 17);
-        KkykNmTxt.TabIndex = 472;
+        KkykNmTxt.TabIndex = 24;
         KkykNmTxt.Text = "1234567890123456789012345678901234567890";
         // 
         // FrmSerNoTxt
@@ -310,7 +312,7 @@ partial class FrameSheetListForm
         FrmSerNoTxt.DisabledForeColor = SystemColors.WindowText;
         FrmSerNoTxt.Font = new Font("BIZ UDゴシック", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
         FrmSerNoTxt.GridLine = new GrapeCity.Win.Editors.Line(GrapeCity.Win.Editors.LineStyle.Single, SystemColors.ControlDark);
-        FrmSerNoTxt.Location = new Point(875, 26);
+        FrmSerNoTxt.Location = new Point(875, 27);
         FrmSerNoTxt.MaxLength = 100;
         FrmSerNoTxt.Name = "FrmSerNoTxt";
         FrmSerNoTxt.Padding = new Padding(3, 1, 1, 1);
@@ -318,7 +320,7 @@ partial class FrameSheetListForm
         FrmSerNoTxt.ReadOnlyForeColor = SystemColors.WindowText;
         FrmSerNoTxt.SingleBorderColor = Color.SteelBlue;
         FrmSerNoTxt.Size = new Size(160, 17);
-        FrmSerNoTxt.TabIndex = 471;
+        FrmSerNoTxt.TabIndex = 20;
         FrmSerNoTxt.Text = "1234567890123456789012345";
         // 
         // FrmSerNoLbl
@@ -326,10 +328,10 @@ partial class FrameSheetListForm
         FrmSerNoLbl.BackColor = Color.SteelBlue;
         FrmSerNoLbl.Font = new Font("Yu Gothic UI", 9F);
         FrmSerNoLbl.ForeColor = Color.White;
-        FrmSerNoLbl.Location = new Point(789, 26);
+        FrmSerNoLbl.Location = new Point(789, 27);
         FrmSerNoLbl.Name = "FrmSerNoLbl";
         FrmSerNoLbl.Size = new Size(86, 17);
-        FrmSerNoLbl.TabIndex = 470;
+        FrmSerNoLbl.TabIndex = 19;
         FrmSerNoLbl.Text = "車両特定番号";
         FrmSerNoLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -338,10 +340,10 @@ partial class FrameSheetListForm
         FrmNoLbl.BackColor = Color.SteelBlue;
         FrmNoLbl.Font = new Font("Yu Gothic UI", 9F);
         FrmNoLbl.ForeColor = Color.White;
-        FrmNoLbl.Location = new Point(533, 26);
+        FrmNoLbl.Location = new Point(533, 27);
         FrmNoLbl.Name = "FrmNoLbl";
         FrmNoLbl.Size = new Size(86, 17);
-        FrmNoLbl.TabIndex = 469;
+        FrmNoLbl.TabIndex = 17;
         FrmNoLbl.Text = "車台番号";
         FrmNoLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -355,7 +357,7 @@ partial class FrameSheetListForm
         FrmNoTxt.DisabledForeColor = SystemColors.WindowText;
         FrmNoTxt.Font = new Font("BIZ UDゴシック", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
         FrmNoTxt.GridLine = new GrapeCity.Win.Editors.Line(GrapeCity.Win.Editors.LineStyle.Single, SystemColors.ControlDark);
-        FrmNoTxt.Location = new Point(619, 26);
+        FrmNoTxt.Location = new Point(619, 27);
         FrmNoTxt.MaxLength = 20;
         FrmNoTxt.Name = "FrmNoTxt";
         FrmNoTxt.Padding = new Padding(3, 1, 1, 1);
@@ -363,7 +365,7 @@ partial class FrameSheetListForm
         FrmNoTxt.ReadOnlyForeColor = SystemColors.WindowText;
         FrmNoTxt.SingleBorderColor = Color.SteelBlue;
         FrmNoTxt.Size = new Size(130, 17);
-        FrmNoTxt.TabIndex = 468;
+        FrmNoTxt.TabIndex = 18;
         FrmNoTxt.Text = "12345678901234567890";
         // 
         // HchkykNoLbl
@@ -371,10 +373,10 @@ partial class FrameSheetListForm
         HchkykNoLbl.BackColor = Color.SteelBlue;
         HchkykNoLbl.Font = new Font("Yu Gothic UI", 9F);
         HchkykNoLbl.ForeColor = Color.White;
-        HchkykNoLbl.Location = new Point(362, 26);
+        HchkykNoLbl.Location = new Point(362, 27);
         HchkykNoLbl.Name = "HchkykNoLbl";
         HchkykNoLbl.Size = new Size(86, 17);
-        HchkykNoLbl.TabIndex = 466;
+        HchkykNoLbl.TabIndex = 15;
         HchkykNoLbl.Text = "発注時契約No";
         HchkykNoLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -388,14 +390,15 @@ partial class FrameSheetListForm
         HchkykNoTxt.DisabledForeColor = SystemColors.WindowText;
         HchkykNoTxt.Font = new Font("BIZ UDゴシック", 9F);
         HchkykNoTxt.GridLine = new GrapeCity.Win.Editors.Line(GrapeCity.Win.Editors.LineStyle.Single, SystemColors.ControlDark);
-        HchkykNoTxt.Location = new Point(448, 26);
+        HchkykNoTxt.Location = new Point(448, 27);
+        HchkykNoTxt.MaxLength = 7;
         HchkykNoTxt.Name = "HchkykNoTxt";
         HchkykNoTxt.Padding = new Padding(3, 1, 1, 1);
         HchkykNoTxt.ReadOnlyBackColor = Color.AliceBlue;
         HchkykNoTxt.ReadOnlyForeColor = SystemColors.WindowText;
         HchkykNoTxt.SingleBorderColor = Color.SteelBlue;
         HchkykNoTxt.Size = new Size(55, 17);
-        HchkykNoTxt.TabIndex = 467;
+        HchkykNoTxt.TabIndex = 16;
         HchkykNoTxt.Text = "1234567";
         // 
         // CsvTypLbl
@@ -406,7 +409,7 @@ partial class FrameSheetListForm
         CsvTypLbl.Location = new Point(3, 27);
         CsvTypLbl.Name = "CsvTypLbl";
         CsvTypLbl.Size = new Size(86, 17);
-        CsvTypLbl.TabIndex = 461;
+        CsvTypLbl.TabIndex = 12;
         CsvTypLbl.Text = "種別";
         CsvTypLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -415,36 +418,36 @@ partial class FrameSheetListForm
         label2.BackColor = Color.SteelBlue;
         label2.Font = new Font("Yu Gothic UI", 9F);
         label2.ForeColor = Color.White;
-        label2.Location = new Point(362, 4);
+        label2.Location = new Point(362, 5);
         label2.Name = "label2";
         label2.Size = new Size(86, 17);
-        label2.TabIndex = 452;
+        label2.TabIndex = 3;
         label2.Text = "ステータス";
         label2.TextAlign = ContentAlignment.MiddleLeft;
         // 
-        // TntUT0Chk
+        // TntUT1Chk
         // 
-        TntUT0Chk.FlatAppearance.BorderColor = Color.SteelBlue;
-        TntUT0Chk.FlatAppearance.CheckedBackColor = Color.SandyBrown;
-        TntUT0Chk.FlatStyle = GrapeCity.Win.Common.FlatStyleEx.Flat;
-        TntUT0Chk.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-        TntUT0Chk.Location = new Point(97, 4);
-        TntUT0Chk.Name = "TntUT0Chk";
-        TntUT0Chk.Padding = new Padding(1);
-        TntUT0Chk.Size = new Size(68, 19);
-        TntUT0Chk.TabIndex = 448;
-        TntUT0Chk.Text = "登録UT";
-        TntUT0Chk.UseVisualStyleBackColor = true;
+        TntUT1Chk.FlatAppearance.BorderColor = Color.SteelBlue;
+        TntUT1Chk.FlatAppearance.CheckedBackColor = Color.SandyBrown;
+        TntUT1Chk.FlatStyle = GrapeCity.Win.Common.FlatStyleEx.Flat;
+        TntUT1Chk.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+        TntUT1Chk.Location = new Point(97, 4);
+        TntUT1Chk.Name = "TntUT1Chk";
+        TntUT1Chk.Padding = new Padding(1);
+        TntUT1Chk.Size = new Size(68, 19);
+        TntUT1Chk.TabIndex = 1;
+        TntUT1Chk.Text = "登録UT";
+        TntUT1Chk.UseVisualStyleBackColor = true;
         // 
         // ImpDTLbl
         // 
         ImpDTLbl.BackColor = Color.SteelBlue;
         ImpDTLbl.Font = new Font("Yu Gothic UI", 9F);
         ImpDTLbl.ForeColor = Color.White;
-        ImpDTLbl.Location = new Point(789, 4);
+        ImpDTLbl.Location = new Point(789, 5);
         ImpDTLbl.Name = "ImpDTLbl";
         ImpDTLbl.Size = new Size(86, 17);
-        ImpDTLbl.TabIndex = 447;
+        ImpDTLbl.TabIndex = 8;
         ImpDTLbl.Text = "取込日";
         ImpDTLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -456,7 +459,7 @@ partial class FrameSheetListForm
         label21.Location = new Point(959, 5);
         label21.Name = "label21";
         label21.Size = new Size(18, 17);
-        label21.TabIndex = 446;
+        label21.TabIndex = 10;
         label21.Text = "～";
         label21.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -465,17 +468,17 @@ partial class FrameSheetListForm
         ImpDtFrm.BackColor = Color.White;
         ImpDtFrm.BorderStyle = BorderStyle.FixedSingle;
         ImpDtFrm.ContentAlignment = ContentAlignment.MiddleLeft;
-        dateLiteralField1.Text = "/";
-        dateLiteralField2.Text = "/";
-        ImpDtFrm.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField1, dateLiteralField1, dateMonthField1, dateLiteralField2, dateDayField1 });
+        dateLiteralField5.Text = "/";
+        dateLiteralField6.Text = "/";
+        ImpDtFrm.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField3, dateLiteralField5, dateMonthField3, dateLiteralField6, dateDayField3 });
         ImpDtFrm.Font = new Font("BIZ UDゴシック", 9F);
-        ImpDtFrm.Location = new Point(875, 4);
+        ImpDtFrm.Location = new Point(875, 5);
         ImpDtFrm.Name = "ImpDtFrm";
         ImpDtFrm.Padding = new Padding(3, 1, 1, 1);
         ImpDtFrm.SideButtons.AddRange(new GrapeCity.Win.Editors.SideButtonBase[] { dropDownButton12 });
         ImpDtFrm.SingleBorderColor = Color.SteelBlue;
         ImpDtFrm.Size = new Size(82, 17);
-        ImpDtFrm.TabIndex = 445;
+        ImpDtFrm.TabIndex = 9;
         ImpDtFrm.Value = null;
         // 
         // dropDownButton12
@@ -487,17 +490,17 @@ partial class FrameSheetListForm
         ImpDtTo.BackColor = Color.White;
         ImpDtTo.BorderStyle = BorderStyle.FixedSingle;
         ImpDtTo.ContentAlignment = ContentAlignment.MiddleLeft;
-        dateLiteralField3.Text = "/";
-        dateLiteralField4.Text = "/";
-        ImpDtTo.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField2, dateLiteralField3, dateMonthField2, dateLiteralField4, dateDayField2 });
+        dateLiteralField7.Text = "/";
+        dateLiteralField8.Text = "/";
+        ImpDtTo.Fields.AddRange(new GrapeCity.Win.Editors.Fields.DateField[] { dateYearField4, dateLiteralField7, dateMonthField4, dateLiteralField8, dateDayField4 });
         ImpDtTo.Font = new Font("BIZ UDゴシック", 9F);
-        ImpDtTo.Location = new Point(979, 4);
+        ImpDtTo.Location = new Point(979, 5);
         ImpDtTo.Name = "ImpDtTo";
         ImpDtTo.Padding = new Padding(3, 1, 1, 1);
         ImpDtTo.SideButtons.AddRange(new GrapeCity.Win.Editors.SideButtonBase[] { dropDownButton13 });
         ImpDtTo.SingleBorderColor = Color.SteelBlue;
         ImpDtTo.Size = new Size(82, 17);
-        ImpDtTo.TabIndex = 444;
+        ImpDtTo.TabIndex = 11;
         ImpDtTo.Value = null;
         // 
         // dropDownButton13
@@ -511,7 +514,7 @@ partial class FrameSheetListForm
         SearchBtn.Location = new Point(1147, 48);
         SearchBtn.Name = "SearchBtn";
         SearchBtn.Size = new Size(90, 31);
-        SearchBtn.TabIndex = 424;
+        SearchBtn.TabIndex = 25;
         SearchBtn.Text = "検索";
         SearchBtn.UseVisualStyleBackColor = true;
         SearchBtn.Click += SearchBtn_Click;
@@ -524,7 +527,7 @@ partial class FrameSheetListForm
         TntUTLbl.Location = new Point(3, 5);
         TntUTLbl.Name = "TntUTLbl";
         TntUTLbl.Size = new Size(86, 17);
-        TntUTLbl.TabIndex = 407;
+        TntUTLbl.TabIndex = 0;
         TntUTLbl.Text = "担当UT";
         TntUTLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -536,7 +539,7 @@ partial class FrameSheetListForm
         GcMultiRow1.Name = "GcMultiRow1";
         GcMultiRow1.ScrollBars = ScrollBars.Vertical;
         GcMultiRow1.Size = new Size(1342, 466);
-        GcMultiRow1.TabIndex = 408;
+        GcMultiRow1.TabIndex = 8;
         GcMultiRow1.Text = "gcMultiRow1";
         GcMultiRow1.CellDoubleClick += GcMultiRow1_CellDoubleClick;
         // 
@@ -549,8 +552,8 @@ partial class FrameSheetListForm
         KensuLbl.Location = new Point(1247, 165);
         KensuLbl.Name = "KensuLbl";
         KensuLbl.Size = new Size(48, 17);
-        KensuLbl.TabIndex = 478;
-        KensuLbl.Text = "6";
+        KensuLbl.TabIndex = 6;
+        KensuLbl.Text = "0";
         KensuLbl.TextAlign = ContentAlignment.MiddleRight;
         // 
         // KensuKenLbl
@@ -562,7 +565,7 @@ partial class FrameSheetListForm
         KensuKenLbl.Location = new Point(1297, 165);
         KensuKenLbl.Name = "KensuKenLbl";
         KensuKenLbl.Size = new Size(48, 17);
-        KensuKenLbl.TabIndex = 477;
+        KensuKenLbl.TabIndex = 7;
         KensuKenLbl.Text = "件";
         KensuKenLbl.TextAlign = ContentAlignment.MiddleLeft;
         // 
@@ -575,7 +578,7 @@ partial class FrameSheetListForm
         KakuninMaeTitleLbl.Location = new Point(7, 9);
         KakuninMaeTitleLbl.Name = "KakuninMaeTitleLbl";
         KakuninMaeTitleLbl.Size = new Size(100, 30);
-        KakuninMaeTitleLbl.TabIndex = 477;
+        KakuninMaeTitleLbl.TabIndex = 1;
         KakuninMaeTitleLbl.Text = "確認前";
         KakuninMaeTitleLbl.TextAlign = ContentAlignment.MiddleCenter;
         // 
@@ -588,7 +591,7 @@ partial class FrameSheetListForm
         IchijiHozonTitleLbl.Location = new Point(106, 9);
         IchijiHozonTitleLbl.Name = "IchijiHozonTitleLbl";
         IchijiHozonTitleLbl.Size = new Size(100, 30);
-        IchijiHozonTitleLbl.TabIndex = 479;
+        IchijiHozonTitleLbl.TabIndex = 3;
         IchijiHozonTitleLbl.Text = "一時保存";
         IchijiHozonTitleLbl.TextAlign = ContentAlignment.MiddleCenter;
         // 
@@ -601,7 +604,7 @@ partial class FrameSheetListForm
         KakuninMaeLbl.Location = new Point(7, 38);
         KakuninMaeLbl.Name = "KakuninMaeLbl";
         KakuninMaeLbl.Size = new Size(100, 32);
-        KakuninMaeLbl.TabIndex = 482;
+        KakuninMaeLbl.TabIndex = 2;
         KakuninMaeLbl.Text = "00000";
         KakuninMaeLbl.TextAlign = ContentAlignment.MiddleRight;
         // 
@@ -614,7 +617,7 @@ partial class FrameSheetListForm
         IchijiHozonLbl.Location = new Point(106, 38);
         IchijiHozonLbl.Name = "IchijiHozonLbl";
         IchijiHozonLbl.Size = new Size(100, 32);
-        IchijiHozonLbl.TabIndex = 483;
+        IchijiHozonLbl.TabIndex = 4;
         IchijiHozonLbl.Text = "00000";
         IchijiHozonLbl.TextAlign = ContentAlignment.MiddleRight;
         // 
@@ -624,7 +627,7 @@ partial class FrameSheetListForm
         CloseBtn.Location = new Point(1255, 656);
         CloseBtn.Name = "CloseBtn";
         CloseBtn.Size = new Size(90, 31);
-        CloseBtn.TabIndex = 484;
+        CloseBtn.TabIndex = 9;
         CloseBtn.Text = "閉じる";
         CloseBtn.UseVisualStyleBackColor = true;
         CloseBtn.Click += CloseBtn_Click;
@@ -675,7 +678,7 @@ partial class FrameSheetListForm
     private GrapeCity.Win.Editors.DropDownButton dropDownButton13;
     private GrapeCity.Win.Buttons.GcButton SearchBtn;
     private Label TntUTLbl;
-    private GrapeCity.Win.Buttons.GcCheckBox TntUT0Chk;
+    private GrapeCity.Win.Buttons.GcCheckBox TntUT1Chk;
     private Label label2;
     private Label CsvTypLbl;
     private Label HchkykNoLbl;
@@ -697,7 +700,7 @@ partial class FrameSheetListForm
     private Label KakuninMaeLbl;
     private Label IchijiHozonLbl;
     private GrapeCity.Win.Buttons.GcButton CloseBtn;
-    private GrapeCity.Win.Buttons.GcCheckBox TntUT1Chk;
+    private GrapeCity.Win.Buttons.GcCheckBox TntUT2Chk;
     private GrapeCity.Win.Buttons.GcCheckBox CsvTyp2Chk;
     private GrapeCity.Win.Buttons.GcCheckBox CsvTyp1Chk;
     private GrapeCity.Win.Buttons.GcCheckBox Status99Chk;

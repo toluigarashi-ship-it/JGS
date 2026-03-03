@@ -157,7 +157,7 @@ public partial class FrameSheetListForm : Form
         // ダブルクリックされたセルが行ヘッダセルならOK
         if (GcMultiRow1[e.RowIndex, e.CellIndex] is RowHeaderCell)
         {
-            //OpenFrameSheetCheckFormForRow(e.RowIndex);
+            OpenFrameSheetCheckFormForRow(e.RowIndex);
         }
     }
 
@@ -254,8 +254,8 @@ public partial class FrameSheetListForm : Form
         Status0Chk.DataBindings.Add("Checked", _condBindingSource, nameof(FrameSheetListSearchConditions.CondSTS_Confirmed), true, DataSourceUpdateMode.OnPropertyChanged);
 
         // 担当UT
-        TntUT0Chk.DataBindings.Add("Checked", _condBindingSource, nameof(FrameSheetListSearchConditions.CondTNTUT_Register), true, DataSourceUpdateMode.OnPropertyChanged);
-        TntUT1Chk.DataBindings.Add("Checked", _condBindingSource, nameof(FrameSheetListSearchConditions.CondTNTUT_Document), true, DataSourceUpdateMode.OnPropertyChanged);
+        TntUT1Chk.DataBindings.Add("Checked", _condBindingSource, nameof(FrameSheetListSearchConditions.CondTNTUT_Register), true, DataSourceUpdateMode.OnPropertyChanged);
+        TntUT2Chk.DataBindings.Add("Checked", _condBindingSource, nameof(FrameSheetListSearchConditions.CondTNTUT_Document), true, DataSourceUpdateMode.OnPropertyChanged);
     }
 
     /// <summary>
@@ -378,7 +378,7 @@ public partial class FrameSheetListForm : Form
             columnsWidthTotal += cell.Width;
         }
 
-        var extra = viewWidth - columnsWidthTotal;
+        var extra = viewWidth - columnsWidthTotal - 4; //若干はみ出るため4ピクセル調整
         if (extra <= 0)
         {
             return;
